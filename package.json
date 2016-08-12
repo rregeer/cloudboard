@@ -1,0 +1,33 @@
+{
+  "name": "cloudboard",
+  "version": "0.1.0",
+  "description": "Cloud based soundboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngerritsen/cloudboard.git"
+  },
+  "keywords": [
+    "soundboard",
+    "cloud",
+    "firebase",
+    "nederlands",
+    "nl"
+  ],
+  "author": "Niels Gerritsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngerritsen/cloudboard/issues"
+  },
+  "homepage": "https://github.com/ngerritsen/cloudboard#readme",
+  "devDependencies": {
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  }
+}

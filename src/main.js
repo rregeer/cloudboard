@@ -1,4 +1,6 @@
-document.getElementById('js-play').addEventListener('click', function () {
-  var audio = new Audio('sounds/5-euro-op-je-muil.mp3');
-  audio.play();
-});
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import Cloudboard from './cloudboard'
+
+ReactDOM.render(<Cloudboard/>, document.getElementById('root'))
