@@ -24,10 +24,7 @@
   },
   "homepage": "https://github.com/ngerritsen/cloudboard#readme",
   "devDependencies": {
-    "webpack": "^1.13.1"
   },
   "dependencies": {
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
   }
 }
