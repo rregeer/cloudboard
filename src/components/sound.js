@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 
-export default function Sound({ title, name, play }) {
+export default function Sound({ title, name, queue }) {
   return (
-    <button onClick={() => play(title, name)}>{title}</button>
+    <button onClick={() => queue(name)}>{title}</button>
   )
 }
 
 Sound.propTypes = {
-  title: PropTypes.string,
-  name: PropTypes.string,
-  play: PropTypes.func
+  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  queue: PropTypes.func.isRequired
 }

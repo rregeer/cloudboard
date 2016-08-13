@@ -2,32 +2,35 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { play } from '../actions'
+import { queue } from '../actions'
 import Board from './board'
+import Player from './player'
 
 @connect(
-  state => state,
-  dispatch => bindActionCreators({ play }, dispatch)
+  ({ queue }) => ({ playing: queue[0] && queue[0].title }),
+  dispatch => bindActionCreators({ queue }, dispatch)
 )
 export default class Cloudboard extends Component {
   static propTypes = {
     boards: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string,
-      sounds: PropTypes.array
-    })),
-    play: PropTypes.func
+      title: PropTypes.string.isRequired,
+      sounds: PropTypes.array.isRequired
+    })).isRequired,
+    queue: PropTypes.func.isRequired,
+    playing: PropTypes.string
   }
 
   render() {
-    const { play, boards } = this.props
+    const { queue, boards, playing } = this.props
     return <div className="container">
       <h1>Cloudboard</h1>
+      <Player playing={playing}/>
       {boards.map(({ sounds, title }) =>
         <Board
           key={title}
           title={title}
           sounds={sounds}
-          play={play}
+          queue={queue}
         />
       )}
     </div>

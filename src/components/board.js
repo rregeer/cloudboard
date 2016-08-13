@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Sound from './sound';
 
-export default function Board({ title, sounds, play }) {
+export default function Board({ title, sounds, queue }) {
   return (
     <div className="board">
       <h2>{title}</h2>
@@ -9,7 +9,7 @@ export default function Board({ title, sounds, play }) {
         <Sound
           title={title}
           name={name}
-          play={play}
+          queue={queue}
           key={name}
         />
       )}
@@ -18,10 +18,10 @@ export default function Board({ title, sounds, play }) {
 }
 
 Board.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   sounds: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    name: PropTypes.string
-  })),
-  play: PropTypes.func
+    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  })).isRequired,
+  queue: PropTypes.func.isRequired
 }
