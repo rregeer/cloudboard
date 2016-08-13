@@ -24,7 +24,22 @@
   },
   "homepage": "https://github.com/ngerritsen/cloudboard#readme",
   "devDependencies": {
+    "jspm": "^0.16.42"
   },
-  "dependencies": {
+  "dependencies": {},
+  "jspm": {
+    "dependencies": {
+      "@angular/core": "npm:@angular/core@^2.0.0-rc.5",
+      "@angular/platform-browser": "npm:@angular/platform-browser@^2.0.0-rc.5",
+      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.0.0-rc.5",
+      "reflect-metadata": "npm:reflect-metadata@^0.1.8",
+      "rxjs": "npm:rxjs@5.0.0-beta.6",
+      "ts": "github:frankwallis/plugin-typescript@^5.0.9"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
