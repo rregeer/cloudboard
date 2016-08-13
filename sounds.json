@@ -1,0 +1,13 @@
+{
+  "boards": [
+    {
+      "title": "Bob de huisbaas",
+      "sounds": [
+        {
+          "name": "5-euro-op-je-muil",
+          "title": "5 euro? Op je muil, gauw!"
+        }
+      ]
+    }
+  ]
+}
