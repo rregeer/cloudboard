@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 
 export default function Sound({ title, name, play }) {
   return (
-    <button onClick={() => play(name)}>{title}</button>
+    <button onClick={() => play(title, name)}>{title}</button>
   )
 }
 
