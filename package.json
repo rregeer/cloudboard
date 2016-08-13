@@ -30,8 +30,10 @@
   "jspm": {
     "dependencies": {
       "@angular/core": "npm:@angular/core@^2.0.0-rc.5",
+      "@angular/http": "npm:@angular/http@^2.0.0-rc.5",
       "@angular/platform-browser": "npm:@angular/platform-browser@^2.0.0-rc.5",
       "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.0.0-rc.5",
+      "immutable-js": "npm:immutable-js@^0.3.1-6",
       "reflect-metadata": "npm:reflect-metadata@^0.1.8",
       "rxjs": "npm:rxjs@5.0.0-beta.6",
       "ts": "github:frankwallis/plugin-typescript@^5.0.9"

@@ -30,11 +30,13 @@ System.config({
 
   map: {
     "@angular/core": "npm:@angular/core@2.0.0-rc.5",
+    "@angular/http": "npm:@angular/http@2.0.0-rc.5",
     "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.5",
     "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.5",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
+    "immutable-js": "npm:immutable-js@0.3.1-6",
     "reflect-metadata": "npm:reflect-metadata@0.1.8",
     "rxjs": "npm:rxjs@5.0.0-beta.6",
     "ts": "github:frankwallis/plugin-typescript@5.0.9",
@@ -90,6 +92,11 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "rxjs": "npm:rxjs@5.0.0-beta.6",
       "zone.js": "npm:zone.js@0.6.12"
+    },
+    "npm:@angular/http@2.0.0-rc.5": {
+      "@angular/core": "npm:@angular/core@2.0.0-rc.5",
+      "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.5",
+      "rxjs": "npm:rxjs@5.0.0-beta.6"
     },
     "npm:@angular/platform-browser-dynamic@2.0.0-rc.5": {
       "@angular/common": "npm:@angular/common@2.0.0-rc.5",
@@ -260,6 +267,10 @@ System.config({
     },
     "npm:hash.js@1.0.3": {
       "inherits": "npm:inherits@2.0.1"
+    },
+    "npm:immutable-js@0.3.1-6": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
