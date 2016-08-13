@@ -1,17 +1,13 @@
 import React, { PropTypes } from 'react'
 
-export default function Sound({ title, name }) {
+export default function Sound({ title, name, play }) {
   return (
-    <button onClick={() => playSound(name)}>{title}</button>
+    <button onClick={() => play(name)}>{title}</button>
   )
 }
 
-function playSound(name) {
-  const audio = new Audio(`./sounds/${name}.mp3`)
-  audio.play()
-}
-
-Sound.proptypes = {
+Sound.propTypes = {
   title: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+  play: PropTypes.func
 }

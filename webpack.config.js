@@ -1,4 +1,5 @@
 module.exports = {
+  devtool: 'source-map',
   entry: './src/main.js',
   output: {
     filename: 'public/bundle.js'
@@ -8,7 +9,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: 'node_modules'
+        exclude: /node_modules/
       },
       {
         test: /\.json$/,
