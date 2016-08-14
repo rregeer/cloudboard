@@ -39,7 +39,7 @@ Player.propTypes = {
 
 const styles = {
   player: {
-    background: `linear-gradient(to right, ${blue}, ${turqoise})`,
+    background: `${blue} linear-gradient(to right, ${blue}, ${turqoise})`,
     height: playerHeight,
     padding: `0 ${defaultSpacing}`,
     position: 'fixed',

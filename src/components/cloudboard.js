@@ -11,7 +11,7 @@ import { headerHeight, defaultSpacing, playerHeight } from '../styles/variables'
 import { add } from '../styles/helpers'
 
 @connect(
-  ({ queue }) => ({ playing: queue[0] }),
+  ({ queue, sounds, collections }) => ({ playing: queue[0], sounds, collections }),
   dispatch => bindActionCreators({ queue }, dispatch)
 )
 export default class Cloudboard extends Component {

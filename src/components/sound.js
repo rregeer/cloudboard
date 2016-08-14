@@ -23,8 +23,7 @@ Sound.propTypes = {
 
 const styles = {
   sound: {
-    backgroundColor: blue,
-    background: `linear-gradient(to bottom right, ${blue}, ${t(blue).spin(5)})`,
+    background: `${blue} linear-gradient(to bottom right, ${blue}, ${t(blue).spin(5)})`,
     border: 'none',
     borderRadius: '3px',
     color: white,
