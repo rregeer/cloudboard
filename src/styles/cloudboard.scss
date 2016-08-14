@@ -1,7 +1,7 @@
 @import 'variables';
 
 .cloudboard {
-  padding-top: $header-height + $default-spacing;
+  padding-top: $header-height + $default-spacing / 2;
 }
 
 @media screen and (min-width: 480px) {

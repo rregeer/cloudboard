@@ -14,5 +14,7 @@ export default function Cloudboard({ children, location }) {
 }
 
 Cloudboard.propTypes = {
-  location: PropTypes.string.isRequired
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
 }

@@ -6,7 +6,10 @@ export default function Header({ board }) {
   return (
     <div className="header">
       <h1 className="header--title">Cloudboard</h1>
-      {board && <span className="header--board-name">Board: {board}</span>}
+      {board && <span className="header--board-name">
+        <span className="header--board-name-prefix">Board: </span>
+        <strong>{board}</strong>
+      </span>}
     </div>
   )
 }
