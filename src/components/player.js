@@ -1,15 +1,51 @@
 import React, { PropTypes } from 'react'
+import t from 'tinycolor2'
+
+import { turqoise, blue, white, dark } from '../styles/colors'
+import { defaultSpacing, playerHeight } from '../styles/variables'
 
 export default function Player({ playing }) {
+  const icon = playing ? 'volume-up' : 'volume-off'
   return (
-    <div className="player">
-      {playing && (
-        <p>Playing: <strong>{playing}</strong></p>
-      )}
+    <div style={styles.player}>
+      <p style={styles.message}>
+        <i style={styles.icon} className={'fa fa-lg fa-' + icon}></i>
+        {(() => {
+          if (playing) {
+            return <span>{playing}</span>
+          }
+
+          return <span style={styles.idle}>Pretty quiet in here!</span>
+        })()}
+      </p>
+
     </div>
   )
 }
 
 Player.propTypes = {
   playing: PropTypes.string
+}
+
+const styles = {
+  player: {
+    background: `linear-gradient(to right, ${blue}, ${turqoise})`,
+    height: playerHeight,
+    padding: `0 ${defaultSpacing}`,
+    position: 'fixed',
+    bottom: 0,
+    width: '100%'
+  },
+  message: {
+    color: white,
+    lineHeight: playerHeight,
+    margin: 0,
+    textShadow: `0 1px 3px ${t(dark).setAlpha(0.4)}`
+  },
+  icon: {
+    width: '4rem'
+  },
+  idle: {
+    opacity: 0.6
+  }
 }

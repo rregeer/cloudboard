@@ -1,3 +1,5 @@
-export default {
-  text: '#2d2d2d'
-}
+export const text = '#333'
+export const turqoise = '#1abc9c'
+export const blue = '#3498db'
+export const white = '#fff'
+export const dark = '#34495e'

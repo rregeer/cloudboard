@@ -1,4 +1,5 @@
-import colors from './colors'
+import t from 'tinycolor2'
+import { text, white } from './colors'
 
 export default {
   html: {
@@ -8,8 +9,10 @@ export default {
     boxSizing: 'border-box'
   },
   body: {
-    color: colors.text,
+    backgroundColor: t(white).darken(3),
+    color: text,
     fontSize: '1.6rem',
-    fontFamily: 'Roboto, open-sans'
+    fontFamily: 'Roboto, open-sans',
+    margin: 0
   }
 }

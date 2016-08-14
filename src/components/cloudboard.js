@@ -6,6 +6,10 @@ import Radium from 'radium'
 import { queue } from '../actions'
 import Collection from './collection'
 import Player from './player'
+import Header from './header'
+
+import { headerHeight, defaultSpacing } from '../styles/variables'
+import { add } from '../styles/helpers'
 
 @connect(
   ({ queue }) => ({ playing: queue[0] && queue[0].title }),
@@ -16,6 +20,7 @@ export default class Cloudboard extends Component {
   static propTypes = {
     collections: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       sounds: PropTypes.array.isRequired
     })).isRequired,
     queue: PropTypes.func.isRequired,
@@ -24,13 +29,14 @@ export default class Cloudboard extends Component {
 
   render() {
     const { queue, collections, playing } = this.props
-    return <div className="container">
-      <h1>Cloudboard</h1>
+    return <div style={styles.cloudboard}>
+      <Header/>
       <Player playing={playing}/>
-      {collections.map(({ sounds, title }) =>
+      {collections.map(({ sounds, title, name }) =>
         <Collection
           key={title}
           title={title}
+          name={name}
           sounds={sounds}
           queue={queue}
         />
@@ -40,5 +46,7 @@ export default class Cloudboard extends Component {
 }
 
 const styles = {
-
+  cloudboard: {
+    paddingTop: add(headerHeight, defaultSpacing)
+  }
 }
