@@ -1,9 +1,9 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
 
-import config from '../etc/db-config.json'
+import firebaseConfig from '../etc/firebase.json'
 
-const app = firebase.initializeApp(config)
+const app = firebase.initializeApp(firebaseConfig)
 const db = firebase.database()
 
 export default db

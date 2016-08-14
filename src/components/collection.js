@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import Sound from './sound';
 
-export default function Board({ title, sounds, queue }) {
+export default function Collection({ title, sounds, queue }) {
   return (
-    <div className="board">
+    <div className="collection">
       <h2>{title}</h2>
       {sounds.map(({ title, name }) =>
         <Sound
@@ -17,7 +17,7 @@ export default function Board({ title, sounds, queue }) {
   )
 }
 
-Board.propTypes = {
+Collection.propTypes = {
   title: PropTypes.string.isRequired,
   sounds: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,

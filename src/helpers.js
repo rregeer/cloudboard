@@ -1,6 +1,7 @@
-export function extractSoundsFromBoards(boards) {
-  return Object.keys(boards)
-    .reduce((sounds, boardName) => {
-      return [...sounds, ...boards[boardName].sounds]
+export function extractSoundsFromCollections(collections) {
+  return Object.keys(collections)
+    .reduce((sounds, collectionName) => {
+      const collectionSounds = collections[collectionName].sounds;
+      return [...sounds, ...collectionSounds]
     }, [])
 }

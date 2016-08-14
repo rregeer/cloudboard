@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import Radium from 'radium'
 
 import { queue } from '../actions'
-import Board from './board'
+import Collection from './collection'
 import Player from './player'
 
 @connect(
@@ -14,7 +14,7 @@ import Player from './player'
 @Radium
 export default class Cloudboard extends Component {
   static propTypes = {
-    boards: PropTypes.arrayOf(PropTypes.shape({
+    collections: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
       sounds: PropTypes.array.isRequired
     })).isRequired,
@@ -23,12 +23,12 @@ export default class Cloudboard extends Component {
   }
 
   render() {
-    const { queue, boards, playing } = this.props
+    const { queue, collections, playing } = this.props
     return <div className="container">
       <h1>Cloudboard</h1>
       <Player playing={playing}/>
-      {boards.map(({ sounds, title }) =>
-        <Board
+      {collections.map(({ sounds, title }) =>
+        <Collection
           key={title}
           title={title}
           sounds={sounds}
@@ -37,4 +37,8 @@ export default class Cloudboard extends Component {
       )}
     </div>
   }
+}
+
+const styles = {
+
 }
