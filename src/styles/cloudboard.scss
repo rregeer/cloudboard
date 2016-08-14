@@ -1,0 +1,11 @@
+@import 'variables';
+
+.cloudboard {
+  padding-top: $header-height + $default-spacing;
+}
+
+@media screen and (min-width: 480px) {
+  .cloudboard {
+    padding-top: $header-height-desktop + $default-spacing;
+  }
+}

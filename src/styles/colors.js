@@ -1,6 +1,0 @@
-export const text = '#333'
-export const turqoise = '#1abc9c'
-export const blue = '#3498db'
-export const white = '#fff'
-export const dark = '#34495e'
-export const purple = '#9b59b6'

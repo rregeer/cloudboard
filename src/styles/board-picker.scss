@@ -1,0 +1,48 @@
+@import 'variables';
+@import 'colors';
+
+.board-picker {
+  text-align: center;
+  padding-top: 10%;
+}
+
+.board-picker--message {
+  color: lighten($text, 20%);
+  line-height: 2.2rem;
+}
+
+.board-picker--form {
+  margin-bottom: 3rem;
+}
+
+.board-picker--input {
+  border-radius: 3px;
+  border: 1px solid darken($white, 10%);
+  display: inline-block;
+  font-size: 2.1rem;
+  margin-right: 1rem;
+  padding: 1.2rem 1.4rem;
+}
+
+.board-picker--button {
+  background: $blue linear-gradient(to bottom right, $blue, $purple);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 2.1rem;
+  padding: 1.2rem 1.6rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus {
+    cursor: default;
+    opacity: 0.4
+  }
+}

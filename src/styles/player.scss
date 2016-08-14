@@ -1,0 +1,27 @@
+@import 'colors';
+@import 'variables';
+
+.player {
+  background: darken($blue, 5%) linear-gradient(to right, darken($blue, 5%), darken($turqoise, 5%));
+  height: $player-height;
+  padding: 0 $default-spacing;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 11;
+}
+
+.player--message {
+  color: $white;
+  line-height: $player-height;
+  margin: 0;
+  text-shadow: 0 1px 3px transparentize($dark, 0.6);
+}
+
+.player--icon {
+  width: 4rem;
+}
+
+.player--secondary {
+  opacity: 0.6;
+}

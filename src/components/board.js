@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux'
 import { queue as queueAction } from '../actions'
 import Collection from './collection'
 import Player from './player'
-import { playerHeight } from '../styles/variables'
+
+import '../styles/board.scss'
 
 class Board extends Component {
   getPlayingSong() {
@@ -26,7 +27,7 @@ class Board extends Component {
     return (
       <div>
         <Player playing={this.getPlayingSong()}/>
-        <div style={styles.collections}>
+        <div className="board--collections">
           {collections.map(({ sounds, title, name }) =>
             <Collection
               key={title}
@@ -58,10 +59,4 @@ Board.propTypes = {
   }),
   queue: PropTypes.func.isRequired,
   sounds: PropTypes.array
-}
-
-const styles = {
-  collections: {
-    paddingBottom: playerHeight
-  }
 }

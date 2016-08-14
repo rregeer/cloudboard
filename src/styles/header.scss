@@ -1,0 +1,34 @@
+@import 'variables';
+@import 'colors';
+
+.header {
+  background-color: $white;
+  box-shadow: 0 3px 4px transparentize($text, 0.8);
+  height: $header-height;
+  line-height: $header-height;
+  font-size: 2.4rem;
+  padding: 0 $default-spacing;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.header--title {
+  color: $blue;
+  display: inline-block;
+  background: linear-gradient(to right, $blue, $purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.2rem;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  text-transform: lowercase
+}
+
+@media screen and (min-width: 480px) {
+  .header {
+    height: $header-height-desktop;
+    line-height: $header-height-desktop;
+  }
+}

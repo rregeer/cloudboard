@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'colors';
+
+.collection {
+  background-color: transparentize($white, 0.2);
+  box-shadow: 0 3px 4px darken($white, 5%);
+  margin-bottom: 3rem;
+  padding: 2.4rem $default-spacing 2rem;
+}
+
+.collection--title {
+  color: lighten($dark, 10%);
+  font-size: 2.8rem;
+  font-weight: lighter;
+  margin: 0 0 2rem 0;
+}

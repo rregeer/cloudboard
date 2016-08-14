@@ -1,20 +1,18 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Header from './header'
 
-import { headerHeight, defaultSpacing } from '../styles/variables'
-import { add } from '../styles/helpers'
+import '../styles/cloudboard.scss'
 
-export default function Cloudboard({ children }) {
+export default function Cloudboard({ children, location }) {
+  const board = location.pathname.slice(1, location.pathname.length)
   return (
-    <div style={styles.cloudboard}>
-      <Header/>
+    <div className="cloudboard">
+      <Header board={board}/>
       {children}
     </div>
   )
 }
 
-const styles = {
-  cloudboard: {
-    paddingTop: add(headerHeight, defaultSpacing)
-  }
+Cloudboard.propTypes = {
+  location: PropTypes.string.isRequired
 }
