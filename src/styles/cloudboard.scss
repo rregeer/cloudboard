@@ -1,7 +1,36 @@
 @import 'variables';
+@import 'colors';
+
+$cloudboard--version-color: lighten($dark, 36%);
 
 .cloudboard {
   padding-top: $header-height + $default-spacing / 2;
+}
+
+.board-picker + .cloudboard--version {
+  position: absolute;
+  padding-bottom: 2rem;
+  bottom: 0;
+}
+
+.cloudboard--version {
+  font-size: 1.4rem;
+  color: $cloudboard--version-color;
+  text-align: center;
+  padding-bottom: $player-height + 2rem;
+  width: 100%
+}
+
+.cloudboard--version-link,
+.cloudboard--version-link:visited {
+  color: $cloudboard--version-color;
+
+  &:active,
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    color: darken($cloudboard--version-color, 8%);
+  }
 }
 
 @media screen and (min-width: 480px) {

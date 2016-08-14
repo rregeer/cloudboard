@@ -6,8 +6,6 @@ import { queue as queueAction } from '../actions'
 import Collection from './collection'
 import Player from './player'
 
-import '../styles/board.scss'
-
 class Board extends Component {
   getPlayingSong() {
     const { sounds, playing, collections } = this.props
