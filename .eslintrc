@@ -121,7 +121,6 @@
       ]
     }],
     "new-parens": 2,
-    "newline-after-var": 2,
     "no-array-constructor": 2,
     "no-bitwise": 2,
     "no-continue": 2,

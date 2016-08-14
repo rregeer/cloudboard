@@ -12,7 +12,7 @@ import playerMiddleware from './middleware/player-middleware'
 
 const soundEventRepository = new SoundEventRepository(db)
 const sounds = normalizeSounds(collections)
-const queueMiddleware = createQueueMiddleware(soundEventRepository, sounds)
+const queueMiddleware = createQueueMiddleware(soundEventRepository)
 
 let middlewares = [playerMiddleware, queueMiddleware]
 const reducer = combineReducers({

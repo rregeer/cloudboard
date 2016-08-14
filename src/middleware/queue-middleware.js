@@ -1,10 +1,8 @@
 import { play } from '../actions'
 
-export default function createQueueMiddleware(soundEventRepository, sounds) {
+export default function createQueueMiddleware(soundEventRepository) {
   return ({ dispatch }) => {
-    soundEventRepository.listenForChanges(({ sound, collection }) => {
-      dispatch(play(sound, collection))
-    })
+    let listener = null
 
     return next => action => {
       if (action.type === 'QUEUE') {
@@ -12,7 +10,23 @@ export default function createQueueMiddleware(soundEventRepository, sounds) {
         soundEventRepository.pushToQueue(sound, collection)
       }
 
-      next(action);
+      if (action.type === '@@router/LOCATION_CHANGE') {
+        if (listener) {
+          listener.off()
+        }
+
+        const { pathname } = action.payload
+        const board = pathname.slice(1, pathname.length)
+
+        if (board) {
+          soundEventRepository.setBoard(board)
+          listener = soundEventRepository.listenForChanges(({ sound, collection }) => {
+            dispatch(play(sound, collection))
+          })
+        }
+      }
+
+      next(action)
     }
   }
 }

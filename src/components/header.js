@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 import t from 'tinycolor2'
 
-import { white, turqoise, blue, purple } from '../styles/colors'
+import { white, blue, purple, text } from '../styles/colors'
 import { headerHeight, defaultSpacing } from '../styles/variables'
 
-function Header () {
+export default function Header () {
   return (
     <div style={styles.header}>
       <h1 style={styles.headerTitle}>Cloudboard</h1>
@@ -12,12 +12,10 @@ function Header () {
   )
 }
 
-export default Header
-
 const styles = {
   header: {
     backgroundColor: white,
-    boxShadow: `0 3px 4px ${t(white).darken(5)}`,
+    boxShadow: `0 3px 4px ${t(text).lighten().setAlpha(0.1)}`,
     height: headerHeight,
     lineHeight: headerHeight,
     fontSize: '2.4rem',
