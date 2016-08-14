@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Radium from 'radium'
 
 import { queue } from '../actions'
 import Board from './board'
@@ -10,6 +11,7 @@ import Player from './player'
   ({ queue }) => ({ playing: queue[0] && queue[0].title }),
   dispatch => bindActionCreators({ queue }, dispatch)
 )
+@Radium
 export default class Cloudboard extends Component {
   static propTypes = {
     boards: PropTypes.arrayOf(PropTypes.shape({
