@@ -12,10 +12,17 @@ export default function Player({ playing }) {
         <i style={styles.icon} className={'fa fa-lg fa-' + icon}></i>
         {(() => {
           if (playing) {
-            return <span>{playing}</span>
+            return (
+              <span>
+                {playing.sound || 'Unknown sound'}
+                <span style={styles.secondary}>
+                  {' - ' + (playing.collection || 'Unknown collection')}
+                </span>
+              </span>
+            )
           }
 
-          return <span style={styles.idle}>Pretty quiet in here!</span>
+          return <span style={styles.secondary}>Pretty quiet in here!</span>
         })()}
       </p>
 
@@ -24,7 +31,10 @@ export default function Player({ playing }) {
 }
 
 Player.propTypes = {
-  playing: PropTypes.string
+  playing: PropTypes.shape({
+    sound: PropTypes.string,
+    collection: PropTypes.string
+  })
 }
 
 const styles = {
@@ -34,7 +44,8 @@ const styles = {
     padding: `0 ${defaultSpacing}`,
     position: 'fixed',
     bottom: 0,
-    width: '100%'
+    width: '100%',
+    zIndex: 11
   },
   message: {
     color: white,
@@ -45,7 +56,7 @@ const styles = {
   icon: {
     width: '4rem'
   },
-  idle: {
+  secondary: {
     opacity: 0.6
   }
 }

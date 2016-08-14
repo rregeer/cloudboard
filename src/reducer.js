@@ -1,17 +1,20 @@
 const initialState =  {
-  queue: []
+  queue: [],
+  collections: []
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case 'PLAY': {
-      const { title, name } = action
+      const { sound, collection } = action
       return {
-        queue: [...state.queue, { title, name }]
+        ...state,
+        queue: [...state.queue, { sound, collection }]
       }
     }
     case 'STOPPED':
       return {
+        ...state,
         queue: state.queue.slice(1, state.queue.length)
       }
     default:

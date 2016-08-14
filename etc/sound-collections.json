@@ -4,8 +4,208 @@
     "name": "bob-de-huisbaas",
     "sounds": [
       {
-        "name": "5-euro-op-je-muil",
-        "title": "5 euro? Op je muil, gauw!"
+    		"name": "5-euro-op-je-muil",
+        "title": "5 euro's? Op je muil, gauw!"
+      },
+      {
+    		"name": "allemaal-loze-putten",
+        "title": "Allemaal loze putten"
+      },
+      {
+    		"name": "allemaal-vuilniszakken",
+        "title": "Allemaal vuilniszakken"
+      },
+      {
+    		"name": "als-je-nou-je-herses-gebruik",
+        "title": "Als je nou je herses gebruik"
+      },
+      {
+    		"name": "als-je-nou-opgepas-had",
+        "title": "Als je nou opgepas had"
+      },
+      {
+    		"name": "begodverredomd-van-huurders",
+        "title": "Begodverredomd van huurders"
+      },
+      {
+    		"name": "can-you-hear-me",
+        "title": "Can you hear me"
+      },
+      {
+    		"name": "dan-gaat-u-der-achtermekaar-uit",
+        "title": "Dan gaat u der achtermekaar uit"
+      },
+      {
+    		"name": "dan-ken-je-alleen-geen-biertje-kopuh",
+        "title": "Dan ken je alleen geen biertje kopuh"
+      },
+      {
+    		"name": "dat-is-je-huisbaas-die-vraagt-om-zn-centen",
+        "title": "Dat is je huisbaas, die vraagt om z'n centen"
+      },
+      {
+    		"name": "dat-is-wel-mooi-natuurlijk",
+        "title": "Dat is wel mooi natuurlijk"
+      },
+      {
+    		"name": "dat-komt-niet-uit-met-hem",
+        "title": "Dat komt niet uit met hem"
+      },
+      {
+    		"name": "denk-erom-hoor-dat-ik-er-1-ben",
+        "title": "Denkt erom hoor, dat ik er 1 ben"
+      },
+      {
+    		"name": "die-heb-niks-meer-joh",
+        "title": "Die heb niks meer joh"
+      },
+      {
+    		"name": "die-man-stink",
+        "title": "Die man stink"
+      },
+      {
+    		"name": "daaagg",
+        "title": "Dááágg"
+      },
+      {
+    		"name": "elke-zweetneus-van-je-sokken",
+        "title": "Elke zweetneus van je sokken..."
+      },
+      {
+    		"name": "en-jij-krijg-ook-een-tik-op-je-reetos",
+        "title": "En jij krijg ook een tik op je reetos, wha ha ha hááá"
+      },
+      {
+    		"name": "geef-eens-antwoord",
+        "title": "Geef eens antwoord"
+      },
+      {
+    		"name": "gha-ha-ha-ha",
+        "title": "Gha ha ha ha"
+      },
+      {
+    		"name": "hoe-is-het-met-die-paarduuh-hoeveel-ga-je-er-kopuuh",
+        "title": "Hoe is het met die paarduuh, hoeveel ga je er kopuuh"
+      },
+      {
+    		"name": "ill-be-back",
+        "title": "I'll be back"
+      },
+      {
+    		"name": "iedereen-moet-betalen-iedereen",
+        "title": "Iedereen moet betalen...iedereen"
+      },
+      {
+    		"name": "ik-kom-wel-terug-hoooor",
+        "title": "Ik kom wel terug hoooor"
+      },
+      {
+    		"name": "ja-ja-ja-wel-waar-jos",
+        "title": "Ja, Ja, Ja, wel waar Jos"
+      },
+      {
+    		"name": "jaa-dan-is-er-weer-haast-een-maand-om-hee",
+        "title": "Jaa, dan is er weer haast een maand om héé"
+      },
+      {
+    		"name": "je-heb-altijd-een-grote-muil-gehad",
+        "title": "Je heb altijd een grote muil gehad"
+      },
+      {
+    		"name": "je-heb-een-stuk-in-je-broek",
+        "title": "Je heb een stuk in je broek"
+      },
+      {
+    		"name": "je-heb-geen-gulden-hoe-ken-je-nou-kopuuh",
+        "title": "Je heb geen gulden hoe ken je nou kopuuh"
+      },
+      {
+    		"name": "je-heb-nooit-geen-geld-kankerboef",
+        "title": "Je heb nooit geen geld, kankerboef"
+      },
+      {
+    		"name": "je-loop-meer-als-werken",
+        "title": "Je loop meer als werken"
+      },
+      {
+    		"name": "je-moet-gewoon-kijken-hoe-de-baas-het-doet-heee",
+        "title": "Je moet gewoon kijken, hoe de baas het doet hééé"
+      },
+      {
+    		"name": "je-moet-niet-denken-dat-we-dag-en-nacht",
+        "title": "Je moet niet denken dat we dag en nacht...."
+      },
+      {
+    		"name": "je-neem-me-nog-in-de-maling-voor-die-200-euro",
+        "title": "Je neem me nog in de maling voor die 200 euro"
+      },
+      {
+    		"name": "jos-waarom-ben-je-eruit-getrapt",
+        "title": "Jos, waarom ben je eruit getrapt"
+      },
+      {
+    		"name": "kijk-mooi-weer-spelen-ken-iedereen-wel",
+        "title": "Kijk, mooi weer spelen ken iedereen wel"
+      },
+      {
+    		"name": "kijk-je-moet-je-eigen-aanpassen",
+        "title": "Kijk, je moet je eigen anpassen"
+      },
+      {
+    		"name": "laat-maar-komme-gelijk-een-nik-op-zn-lijer-ha-ha-ha-ha",
+        "title": "Laat maar komme, gelijk een nik op z'n lijer, ha ha ha ha"
+      },
+      {
+    		"name": "normaal-doen-hoor",
+        "title": "Normaal doen hoor"
+      },
+      {
+    		"name": "nou-weet-je-wat-werken-is",
+        "title": "Nou weet je wat werken is"
+      },
+      {
+    		"name": "opkankeren-en-van-mn-zakken-uitblijven",
+        "title": "Opkankeren en van m'n zakken uitblijven"
+      },
+      {
+    		"name": "optieffuhh-gauw",
+        "title": "Optieffuhh, gauw!"
+      },
+      {
+    		"name": "tony-wie-is-tony",
+        "title": "Tony, wie is Tony"
+      },
+      {
+    		"name": "tyyffusshoerr",
+        "title": "Tyyffusshoerr"
+      },
+      {
+    		"name": "u-ken-doorgaan",
+        "title": "U ken doorgaan"
+      },
+      {
+    		"name": "vieze-tyfuslijeerr",
+        "title": "Vieze tyfuslijeerr"
+      },
+      {
+    		"name": "waar-zijn-die-andere-300-dan",
+        "title": "Waar zijn die andere 300 dan"
+      },
+      {
+    		"name": "we-hebben-geen-tyfus-aan-die-zwerver-joh",
+        "title": "We hebben geen tyfus aan die zwerver joh"
+      },
+      {
+    		"name": "we-zijn-net-de-soos-kinderen-van-de-soos",
+        "title": "We zijn net de soos, kinderen van de soos"
+      },
+      {
+    		"name": "ze-kennnen-netjes-vragen-om-volgende-maand-te-betalen",
+        "title": "Ze kennen netjes vragen om volgende maand te betalen"
+      },
+      {
+    		"name": "zie-je-dit-zijn-allemaal-stenen-heee",
+        "title": "Zie je, dit zijn allemaal stenen hééé"
       }
     ]
   }

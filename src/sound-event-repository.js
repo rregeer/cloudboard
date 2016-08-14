@@ -5,10 +5,11 @@ export default class SoundEventRepository {
     this._db = db
   }
 
-  pushToQueue(name) {
+  pushToQueue(sound, collection) {
     this._db.ref().push({
       time: Firebase.ServerValue.TIMESTAMP,
-      name
+      sound,
+      collection
     })
   }
 

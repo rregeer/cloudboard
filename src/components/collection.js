@@ -5,7 +5,7 @@ import t from 'tinycolor2'
 import { defaultSpacing } from '../styles/variables'
 import { white, dark } from '../styles/colors'
 
-export default function Collection({ title, name, sounds, queue }) {
+export default function Collection({ title, name: collectionName, sounds, queue }) {
   return (
     <div style={styles.collection}>
       <h2 style={styles.title}>
@@ -17,6 +17,7 @@ export default function Collection({ title, name, sounds, queue }) {
           name={name}
           queue={queue}
           key={name}
+          collection={collectionName}
         />
       )}
     </div>
@@ -36,13 +37,14 @@ Collection.propTypes = {
 const styles = {
   collection: {
     backgroundColor: t(white).setAlpha(0.8),
+    boxShadow: `0 3px 4px ${t(white).darken(5)}`,
     marginBottom: '3rem',
     padding: `2.4rem ${defaultSpacing} 2rem`
   },
   title: {
-    color: dark,
-    fontSize: '2.2rem',
-    fontWeight: 'normal',
-    margin: '0 0 1.6rem 0'
+    color: t(dark).lighten(),
+    fontSize: '2.8rem',
+    fontWeight: 'lighter',
+    margin: '0 0 2rem 0'
   }
 }

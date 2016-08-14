@@ -1,17 +1,18 @@
 import { stopped } from '../actions'
 
-export default function playerMiddleware({ dispatch }) {
+export default function playerMiddleware({ dispatch }, sounds) {
   return next => action => {
     if (action.type === 'PLAY') {
-      playSound(action.name, () => dispatch(stopped()))
+      const { sound, collection } = action
+      playSound(sound, collection, () => dispatch(stopped()))
     }
 
     next(action);
   }
 }
 
-function playSound(name, onEnded) {
-  const url = `./sounds/${name}.mp3`
+function playSound(sound, collection, onEnded) {
+  const url = `./sounds/${collection}/${sound}.mp3`
   const audio = new Audio(url)
 
   audio.onended = onEnded

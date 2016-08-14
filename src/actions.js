@@ -1,15 +1,15 @@
-export const queue = name => ({
+export const queue = (sound, collection) => ({
   type: 'QUEUE',
-  name
+  sound,
+  collection
 })
 
-export const play = (name, title) => ({
+export const play = (sound, collection) => ({
   type: 'PLAY',
-  title,
-  name
+  sound,
+  collection
 })
 
 export const stopped = () => ({
-  type: 'STOPPED',
-  name
+  type: 'STOPPED'
 })

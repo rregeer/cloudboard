@@ -9,10 +9,9 @@ export default {
     boxSizing: 'border-box'
   },
   body: {
-    backgroundColor: t(white).darken(3),
     color: text,
     fontSize: '1.6rem',
-    fontFamily: 'Roboto, open-sans',
+    fontFamily: 'Roboto, sans-serif',
     margin: 0
   }
 }

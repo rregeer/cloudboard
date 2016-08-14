@@ -1,7 +1,8 @@
-export function extractSoundsFromCollections(collections) {
+export function normalizeSounds(collections) {
   return Object.keys(collections)
-    .reduce((sounds, collectionName) => {
-      const collectionSounds = collections[collectionName].sounds;
-      return [...sounds, ...collectionSounds]
+    .reduce((allSounds, collectionName) => {
+      const { sounds, name } = collections[collectionName]
+      const collectionSounds = sounds.map(s => ({ ...s, collection: name }));
+      return [...allSounds, ...collectionSounds]
     }, [])
 }

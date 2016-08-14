@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import t from 'tinycolor2'
 
-import { white, turqoise, blue } from '../styles/colors'
+import { white, turqoise, blue, purple } from '../styles/colors'
 import { headerHeight, defaultSpacing } from '../styles/variables'
 
 function Header () {
@@ -24,11 +24,13 @@ const styles = {
     padding: `0 ${defaultSpacing}`,
     position: 'fixed',
     top: 0,
-    width: '100%'
+    width: '100%',
+    zIndex: 10
   },
   headerTitle: {
-    color: turqoise,
-    background: `-webkit-linear-gradient(${blue}, ${turqoise})`,
+    color: blue,
+    display: 'inline-block',
+    background: `linear-gradient(to right, ${blue}, ${purple})`,
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     fontSize: '3.2rem',
