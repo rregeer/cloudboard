@@ -4,12 +4,14 @@ export const queue = (sound, collection) => ({
   collection
 })
 
-export const play = (sound, collection) => ({
+export const play = (sound, collection, id) => ({
   type: 'PLAY',
+  id,
   sound,
   collection
 })
 
-export const stopped = () => ({
-  type: 'STOPPED'
+export const stopped = id => ({
+  type: 'STOPPED',
+  id
 })

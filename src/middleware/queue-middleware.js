@@ -20,8 +20,8 @@ export default function createQueueMiddleware(soundEventRepository) {
 
         if (board) {
           soundEventRepository.setBoard(board)
-          listener = soundEventRepository.listenForChanges(({ sound, collection }) => {
-            dispatch(play(sound, collection))
+          listener = soundEventRepository.listenForChanges(({ sound, collection }, id) => {
+            dispatch(play(sound, collection, id))
           })
         }
       }
