@@ -3,7 +3,7 @@ import Sound from './sound'
 
 import '../styles/collection.scss'
 
-export default function Collection({ title, name: collectionName, sounds, queue }) {
+export default function Collection({ title, name: collectionName, sounds, queue, index }) {
   return (
     <div className="collection">
       <h2 className="collection--title">
@@ -16,6 +16,7 @@ export default function Collection({ title, name: collectionName, sounds, queue 
           queue={queue}
           key={name}
           collection={collectionName}
+          collectionIndex={index}
         />
       ))}
     </div>
@@ -23,6 +24,7 @@ export default function Collection({ title, name: collectionName, sounds, queue 
 }
 
 Collection.propTypes = {
+  index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   queue: PropTypes.func.isRequired,
   sounds: PropTypes.arrayOf(PropTypes.shape({

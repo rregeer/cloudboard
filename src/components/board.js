@@ -27,13 +27,14 @@ class Board extends Component {
       <div>
         <Player playing={this.getPlayingSong()}/>
         <div className="board--collections">
-          {collections.map(({ sounds, title, name }) =>
+          {collections.map(({ sounds, title, name }, index) =>
             <Collection
               key={title}
               title={title}
               sounds={sounds}
               queue={queue}
               name={name}
+              index={index}
             />
           )}
         </div>

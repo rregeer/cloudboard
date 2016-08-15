@@ -31,7 +31,7 @@
 }
 
 .board-picker--button {
-  background: $blue linear-gradient(to bottom right, $blue, $purple);
+  background: $blue linear-gradient(to bottom right, $blue, adjust-hue($purple, -40));
   border: none;
   border-radius: 3px;
   color: white;

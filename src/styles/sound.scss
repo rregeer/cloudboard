@@ -1,7 +1,12 @@
 @import 'colors';
 
+@mixin sound-theme($degrees) {
+  $color: adjust-hue($blue, $degrees);
+  background: $color linear-gradient(to bottom right, $color, darken(adjust-hue($color, 5), 5%));
+}
+
 .sound {
-  background: $blue linear-gradient(to bottom right, $blue, adjust-hue($blue, 12));
+  @include sound-theme(0);
   border: none;
   border-radius: 3px;
   color: white;
@@ -18,6 +23,18 @@
   &:focus {
     opacity: 1;
     cursor: pointer;
+  }
+
+  &.alt-1 {
+    @include sound-theme(-10);
+  }
+
+  &.alt-2 {
+    @include sound-theme(-20);
+  }
+
+  &.alt-3 {
+    @include sound-theme(-30);
   }
 }
 
