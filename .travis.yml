@@ -6,3 +6,4 @@ install:
 script:
   - npm test
   - npm run build
+after_success: node_modules/gulp/bin/gulp.js deploy --user $FTP_USER --password $FTP_PASSWORD
