@@ -36,6 +36,7 @@ class BoardPicker extends Component {
     return (
       <div className="board-picker">
         <div className="board-picker--form">
+          <label className="board-picker--label">#</label>
           <input
             className="board-picker--input"
             type="text"
