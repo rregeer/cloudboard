@@ -14,7 +14,7 @@ gulp.task('deploy', () => {
     log: util.log
   })
 
-  return gulp.src(['./dist'])
+  return gulp.src(['./dist/**'])
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath))
 })
