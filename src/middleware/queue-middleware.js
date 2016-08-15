@@ -4,7 +4,7 @@ export default function createQueueMiddleware(soundEventRepository) {
   return ({ dispatch }) => {
     let listener = null
 
-    return next => action => {
+    return (next) => (action) => {
       if (action.type === 'QUEUE') {
         const { sound, collection } = action
         soundEventRepository.pushToQueue(sound, collection)

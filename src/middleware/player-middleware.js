@@ -3,7 +3,7 @@ import { stopped } from '../actions'
 const SOUND_TIMEOUT = 10000
 
 export default function playerMiddleware({ dispatch }) {
-  return next => action => {
+  return (next) => (action) => {
     if (action.type === 'PLAY') {
       const { sound, collection, id } = action
       playSound(sound, collection, () => dispatch(stopped(id)))

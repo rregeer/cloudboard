@@ -5,7 +5,7 @@ export default function reducer(state = [], action) {
       return [...state, { sound, collection, id }]
     }
     case 'STOPPED':
-      return state.filter(item => item.id !== action.id)
+      return state.filter((item) => item.id !== action.id)
     default:
       return state
   }
