@@ -1,13 +1,13 @@
 import { stopped } from '../actions'
 
-export default function playerMiddleware({ dispatch }, sounds) {
+export default function playerMiddleware({ dispatch }) {
   return next => action => {
     if (action.type === 'PLAY') {
       const { sound, collection } = action
       playSound(sound, collection, () => dispatch(stopped()))
     }
 
-    next(action);
+    next(action)
   }
 }
 

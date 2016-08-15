@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { queue as queueAction } from '../actions'
 import Collection from './collection'
 import Player from './player'
+import { throttleAction } from '../helpers'
 
 class Board extends Component {
   getPlayingSong() {
@@ -41,9 +42,11 @@ class Board extends Component {
   }
 }
 
+const throttledQueue = throttleAction(queueAction, 2000)
+
 export default connect(
   ({ queue, sounds, collections }) => ({ playing: queue[0], sounds, collections }),
-  dispatch => bindActionCreators({ queue: queueAction }, dispatch)
+  dispatch => bindActionCreators({ queue: throttledQueue }, dispatch)
 )(Board)
 
 Board.propTypes = {
