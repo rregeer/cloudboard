@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --port 8011",
-    "build": "NODE_ENV=production webpack",
+    "build": "NODE_ENV=production webpack; npm run dist",
+    "dist": "mkdir -p dist; rm -Rf dist/*; cp index.html dist; cp -R sounds dist; cp -R public dist",
     "test": "eslint ."
   },
   "repository": {
