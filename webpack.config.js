@@ -35,19 +35,19 @@ const config = {
   ]
 }
 
-// if (env === 'development') {
-config.devtool = 'source-map'
-// }
-//
-// if (env === 'production') {
-//   config.plugins.push(
-//     new webpack.optimize.UglifyJsPlugin({
-//       compressor: {
-//         unsafe: true,
-//         warnings: false
-//       }
-//     })
-//   )
-// }
+if (env === 'development') {
+  config.devtool = 'source-map'
+}
+
+if (env === 'production') {
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        unsafe: true,
+        warnings: false
+      }
+    })
+  )
+}
 
 module.exports = config
