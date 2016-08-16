@@ -22,8 +22,8 @@ const reducer = combineReducers({
   sounds: () => sounds
 })
 
-if (process.env.NODE_ENV === 'development') {
-  middlewares = [...middlewares, createLogger()]
-}
+// if (process.env.NODE_ENV === 'development') {
+middlewares = [...middlewares, createLogger()]
+// }
 
 export default createStore(reducer, applyMiddleware(...middlewares))
