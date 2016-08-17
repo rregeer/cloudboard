@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
+import { routerReducer, routerMiddleware } from 'react-router-redux'
+import { hashHistory } from 'react-router'
 import createLogger from 'redux-logger'
 
 import collections from '../etc/sound-collections.json'
@@ -14,7 +15,7 @@ const soundEventRepository = new SoundEventRepository(db)
 const sounds = normalizeSounds(collections)
 const queueMiddleware = createQueueMiddleware(soundEventRepository)
 
-let middlewares = [playerMiddleware, queueMiddleware]
+let middlewares = [playerMiddleware, queueMiddleware, routerMiddleware(hashHistory)]
 const reducer = combineReducers({
   queue: queueReducer,
   routing: routerReducer,

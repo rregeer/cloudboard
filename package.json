@@ -1,13 +1,14 @@
 {
   "name": "cloudboard",
   "version": "1.0.1",
-  "description": "Cloud based soundboard",
+  "description": "A shared soundboard. �",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --port 8011",
     "build": "NODE_ENV=production webpack; npm run dist",
     "dist": "mkdir -p dist; rm -Rf dist/*; cp index.html dist; cp -R sounds dist; cp -R public dist",
-    "test": "eslint ."
+    "test": "eslint .",
+    "generate": "mkdir -p tools/output; rm -Rf tools/output/*; node ./tools/sound-generator.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "css-loader": "^0.23.1",
     "eslint": "^3.3.0",
     "eslint-plugin-react": "^6.1.0",
+    "fs-extra": "^0.30.0",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
     "json-loader": "^0.5.4",

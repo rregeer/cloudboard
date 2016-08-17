@@ -30,6 +30,11 @@
   padding: 1.2rem 1.4rem;
 }
 
+.board-picker--error {
+  color: $red;
+  margin: -2rem 0 3rem;
+}
+
 .board-picker--button {
   background: $blue linear-gradient(to bottom right, $blue, adjust-hue($purple, -40));
   border: none;

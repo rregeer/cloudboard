@@ -1,59 +1,67 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { push } from 'react-router-redux'
 
 import '../styles/board-picker.scss'
 
+const VALIDATION_ERROR = 'Invalid board name, enter a minumum of 3 characters, only use: (a-z, 0-9 \'-\' or \'_\').'
+
 class BoardPicker extends Component {
   constructor(...args) {
     super(...args)
-    this.state = { input: '' }
+    this.state = { input: '', error: '' }
   }
 
   handleInput() {
-    this.setState({ input: this.refs.input.value.toLowerCase() })
+    const input = this.refs.input.value.toLowerCase()
+    const error = this.isValidBoardName(input) ? '' : this.state.error
+
+    this.setState({ input, error })
   }
 
-  handleKeyPress(e) {
+  handleSubmit(e) {
     const input = this.state.input
-    if (e.key === 'Enter' && this.isValidBoardName(input)) {
-      this.props.push('/' + input)
+
+    e.preventDefault()
+
+    if (!this.isValidBoardName(input)) {
+      this.setState({ error: VALIDATION_ERROR })
+      return
     }
+
+    this.props.push('/' + input)
   }
 
   isValidBoardName(input) {
     return (
-      input.length > 3 &&
+      input.length > 2 &&
       encodeURIComponent(input).indexOf('%') === -1
     )
   }
 
   render() {
-    const { input } = this.state
+    const { input, error } = this.state
     const valid = this.isValidBoardName(input)
     return (
       <div className="board-picker">
-        <div className="board-picker--form">
+        <form className="board-picker--form" onSubmit={this.handleSubmit.bind(this)}>
           <label className="board-picker--label">#</label>
           <input
             className="board-picker--input"
             type="text"
             placeholder="Board name"
             ref="input"
-            onKeyPress={this.handleKeyPress.bind(this)}
             onInput={this.handleInput.bind(this)}
           />
-          {(() => {
-            if (!valid) {
-              return <span className="board-picker--button is-disabled">Join board</span>
-            }
-
-            return <Link to={'/' + this.state.input} className="board-picker--button">Join board</Link>
-          })()}
-
-        </div>
+          <button
+            type="submit"
+            className={'board-picker--button' + (valid ? '' : ' is-disabled')}
+          >
+            Join board
+          </button>
+        </form>
+        {error && <p className="board-picker--error">{error}</p>}
         <p className="board-picker--message">
           Type a name to join a board,
           if the board does not exist it is automatically created!
