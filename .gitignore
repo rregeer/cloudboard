@@ -5,3 +5,4 @@ public
 dist
 tools/input
 tools/output
+npm-debug.log

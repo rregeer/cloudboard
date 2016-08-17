@@ -21,7 +21,7 @@ console.log('All done!') // eslint-disable-line no-console
 function toValidFormat(string) {
   const withoutSpaces = string.replace(/\s+/g, '-')
   return encodeURIComponent(withoutSpaces)
-    .replace(/%\d\d|'/g, '')
+    .replace(/%(\d|\w){2}|'|,/g, '')
     .toLowerCase()
 }
 

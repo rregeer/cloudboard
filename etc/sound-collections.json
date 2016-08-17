@@ -24,10 +24,6 @@
         "title": "Als je nou opgepas had"
       },
       {
-    		"name": "begodverredomd-van-huurders",
-        "title": "Begodverredomd van huurders"
-      },
-      {
     		"name": "can-you-hear-me",
         "title": "Can you hear me"
       },
@@ -40,16 +36,8 @@
         "title": "Dan ken je alleen geen biertje kopuh"
       },
       {
-    		"name": "dat-is-je-huisbaas-die-vraagt-om-zn-centen",
-        "title": "Dat is je huisbaas, die vraagt om z'n centen"
-      },
-      {
     		"name": "dat-is-wel-mooi-natuurlijk",
         "title": "Dat is wel mooi natuurlijk"
-      },
-      {
-    		"name": "dat-komt-niet-uit-met-hem",
-        "title": "Dat komt niet uit met hem"
       },
       {
     		"name": "denk-erom-hoor-dat-ik-er-1-ben",
@@ -58,10 +46,6 @@
       {
     		"name": "die-heb-niks-meer-joh",
         "title": "Die heb niks meer joh"
-      },
-      {
-    		"name": "die-man-stink",
-        "title": "Die man stink"
       },
       {
     		"name": "daaagg",
@@ -312,6 +296,88 @@
       {
     		"name": "wat-weet-jij-er-nou-gvd-van",
         "title": "Wat weet jij er nou gvd van"
+      }
+    ]
+  },
+  {
+    "name": "haagse-sjonnie",
+    "title": "Haagse Sjonnie",
+    "sounds": [
+      {
+        "name": "alle-kankah-dinge-op-de-wereld-gedaan",
+        "title": "Alle kankâh dinge op de wereld gedaan"
+      },
+      {
+        "name": "als-ik-werk-dan-blow-ik",
+        "title": "Als ik werk dan blow ik"
+      },
+      {
+        "name": "dag-beunhaas",
+        "title": "Dag beunhaas"
+      },
+      {
+        "name": "de-echte-de-grote-ja",
+        "title": "De echte de grote ja"
+      },
+      {
+        "name": "die-rechtah-heb-een-veel-te-grote-bek-voor-dr-leeftijd",
+        "title": "Die rechtâh heb een veel te grote bek voor d'r leeftijd"
+      },
+      {
+        "name": "die-rechtah-ken-van-mij-de-kankah-krijge",
+        "title": "Die rechtâh ken van mij de kankâh krijge"
+      },
+      {
+        "name": "douche-met-je-bloedkop",
+        "title": "Douche, met je bloedkop"
+      },
+      {
+        "name": "geef-nou-maar-je-chef",
+        "title": "Geef nou maar je chef"
+      },
+      {
+        "name": "heb-die-andere-chef-er-al-uit-gewerkt",
+        "title": "Heb die andere chef er al uit gewerkt"
+      },
+      {
+        "name": "ik-ben-altijd-blij-als-ie-s-morgens-oprot",
+        "title": "Ik ben altijd blij als ie s' morgens oprot"
+      },
+      {
+        "name": "jij-komt-zeker-niet-uit-den-haag-he",
+        "title": "Jij komt zeker niet uit Den Haag hè?"
+      },
+      {
+        "name": "loop-bij-3-spychiaters",
+        "title": "Loop bij 3 spychiaters"
+      },
+      {
+        "name": "lopende-tijdbom",
+        "title": "Lopende tijdbom"
+      },
+      {
+        "name": "lopuh-kankah-neus",
+        "title": "Lopûh, kankâh neus"
+      },
+      {
+        "name": "mijn-muren-zijn-geel",
+        "title": "Mijn muren zijn geel"
+      },
+      {
+        "name": "neuj-mindah-nog",
+        "title": "Neuj, mindâh nog"
+      },
+      {
+        "name": "sociale-dienst-was-vroegah-veel-makkelijker",
+        "title": "Sociale dienst was vroegâh veel makkelijker"
+      },
+      {
+        "name": "verlaat-mijn-pandje-gewoon",
+        "title": "Verlaat mijn pandje gewoon"
+      },
+      {
+        "name": "wat-een-mongool-ben-jij-zeg",
+        "title": "Wat een mongool ben jij zeg"
       }
     ]
   }
