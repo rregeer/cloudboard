@@ -380,5 +380,29 @@
         "title": "Wat een mongool ben jij zeg"
       }
     ]
+  },
+  {
+    "name": "harm-alarm",
+    "title": "Harm Alarm",
+    "sounds": [
+      {
+        "name": "hallo",
+        "title": "Hallo"
+      },
+      {
+        "name": "ja-ik-blijf-het-toch-zeggen",
+        "title": "Ja, ik blijf het toch zeggen"
+      }
+    ]
+  },
+  {
+    "name": "rijkswaterstaat",
+    "title": "Rijkswaterstaat",
+    "sounds": [
+      {
+        "name": "vergeet-je-niet-iets",
+        "title": "Vergeet je niet iets?"
+      }
+    ]
   }
 ]
