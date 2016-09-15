@@ -1,7 +1,7 @@
 @import 'colors';
 
 @mixin sound-theme($degrees) {
-  $color: adjust-hue($blue, $degrees);
+  $color: adjust-hue($blue, $degrees + 15);
   background: $color linear-gradient(to bottom right, $color, darken(adjust-hue($color, 5), 5%));
 }
 
@@ -35,6 +35,22 @@
 
   &.alt-3 {
     @include sound-theme(-30);
+  }
+
+  &.alt-4 {
+    @include sound-theme(-40);
+  }
+
+  &.alt-5 {
+    @include sound-theme(-50);
+  }
+
+  &.alt-6 {
+    @include sound-theme(-60);
+  }
+
+  &.alt-7 {
+    @include sound-theme(-70);
   }
 }
 
