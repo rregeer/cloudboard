@@ -43,7 +43,7 @@ class Board extends Component {
   }
 }
 
-const throttledQueue = throttleAction(queueAction, 2000)
+const throttledQueue = throttleAction(queueAction, 600)
 
 export default connect(
   ({ queue, sounds, collections }) => ({ playing: queue[0], sounds, collections }),
