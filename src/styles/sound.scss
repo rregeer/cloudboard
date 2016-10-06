@@ -81,6 +81,14 @@ $sound-activation-delay: 80ms;
   }
 }
 
+.sound__key--secondary {
+  background-color: desaturate(lighten($orange, 12%), 15%);
+
+  .sound--pressed & {
+    background-color: desaturate($orange, 10%);
+  }
+}
+
 @media screen and (min-width: 480px) {
   .sound {
     width: auto;

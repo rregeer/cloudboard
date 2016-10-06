@@ -11,6 +11,14 @@ export default function Collection({ title, name, collectionKey, pressed, sounds
         <span className={'collection__key' + (pressed ? ' collection__key--pressed' : '')}>
           {collectionKey}
         </span>
+        {
+          pressed &&
+          <span className={'collection__help-text'}>
+            Press <strong>Ctrl + KEY</strong> to trigger <span className="collection__help-secondary-tag">
+              secondary
+            </span> keys
+          </span>
+        }
       </h2>
       {sounds.map(sound =>
         <Sound

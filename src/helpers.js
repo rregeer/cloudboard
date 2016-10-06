@@ -2,11 +2,10 @@ import { letterIndex } from './constants'
 
 export function normalizeSounds(collections) {
   return collections.reduce((allSounds, { sounds, name: collection, key: collectionKey }) => {
-    const collectionSounds = sounds.map((sound, index) => ({
+    const collectionSounds = sounds.map(sound => ({
       ...sound,
       collection,
-      collectionKey,
-      key: letterIndex[index]
+      collectionKey
     }))
     return [...allSounds, ...collectionSounds]
   }, [])
@@ -23,7 +22,8 @@ export function addKeys(collections) {
 function addKeysToSounds(sounds) {
   return sounds.map((sound, index) => ({
     ...sound,
-    key: letterIndex[index]
+    key: letterIndex[index] || letterIndex[index - letterIndex.length],
+    isSecondary: index >= letterIndex.length
   }))
 }
 
