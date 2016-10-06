@@ -11,18 +11,18 @@
   z-index: 11;
 }
 
-.player--message {
+.player__message {
   color: $white;
   line-height: $player-height;
   margin: 0;
   text-shadow: 0 1px 3px transparentize($dark, 0.6);
 }
 
-.player--icon {
+.player__icon {
   width: 4rem;
 }
 
-.player--secondary {
+.player__secondary {
   opacity: 0.6;
 }
 

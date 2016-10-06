@@ -21,11 +21,11 @@ function handleKeyCombinations({ keys, sounds }, dispatch) {
     return
   }
 
-  const [collectionKeyString, soundKey] = keys
-  const collectionKey = Number(collectionKeyString)
+  const [collectionKey, soundKey] = keys
+
   const matchingSound = sounds.find(sound =>
     sound.collectionKey === collectionKey &&
-    sound.soundKey === soundKey
+    sound.key === soundKey
   )
 
   if (matchingSound) {

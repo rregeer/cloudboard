@@ -9,11 +9,11 @@ export default function Cloudboard({ children, location }) {
     <div className="cloudboard">
       <Header board={board}/>
       {children}
-      <p className="cloudboard--version">
+      <p className="cloudboard__version">
         <i className="fa fa-copyright"/>
         {'\u00A0'}
         <a
-          className="cloudboard--version-link"
+          className="cloudboard__version-link"
           href="http://nielsgerritsen.com"
           target="_blank"
         >

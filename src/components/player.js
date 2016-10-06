@@ -6,21 +6,21 @@ export default function Player({ playing }) {
   const icon = playing ? 'volume-up' : 'volume-off'
   return (
     <div className="player">
-      <p className="player--message">
-        <i className={'player--icon fa fa-lg fa-' + icon}/>
+      <p className="player__message">
+        <i className={'player__icon fa fa-lg fa-' + icon}/>
         {(() => {
           if (playing) {
             return (
               <span>
                 {playing.sound || 'Unknown sound'}
-                <span className="player--secondary">
+                <span className="player__secondary">
                   {' - ' + (playing.collection || 'Unknown collection')}
                 </span>
               </span>
             )
           }
 
-          return <span className="player--secondary">Pretty quiet in here!</span>
+          return <span className="player__secondary">Pretty quiet in here!</span>
         })()}
       </p>
     </div>

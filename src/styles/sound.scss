@@ -1,56 +1,83 @@
 @import 'colors';
 
+$sound-activation-delay: 120ms;
+
 @mixin sound-theme($degrees) {
-  $color: adjust-hue($blue, $degrees + 15);
+  $base-color: adjust-hue($blue, $degrees + 15);
+  $color: lighten($base-color, 7%);
   background: $color linear-gradient(to bottom right, $color, darken(adjust-hue($color, 5), 5%));
+
+  &:hover,
+  &:focus {
+    background: $base-color linear-gradient(to bottom right, $base-color, darken(adjust-hue($base-color, 5), 5%));
+  }
 }
 
 .sound {
   @include sound-theme(0);
+
+  position: relative;
   border: none;
   border-radius: 3px;
   color: white;
   font-size: 1.3rem;
   font-weight: bold;
   margin: 0 1rem 1rem 0;
-  opacity: 0.8;
   padding: 0.6rem 1.2rem;
   text-transform: uppercase;
-  transition: opacity 200ms ease;
+  transition: background $sound-activation-delay ease;
   width: 100%;
 
   &:hover,
   &:focus {
-    opacity: 1;
     cursor: pointer;
   }
 
-  &.alt-1 {
+  &.sound--1 {
     @include sound-theme(-10);
   }
 
-  &.alt-2 {
+  &.sound--2 {
     @include sound-theme(-20);
   }
 
-  &.alt-3 {
+  &.sound--3 {
     @include sound-theme(-30);
   }
 
-  &.alt-4 {
+  &.sound--4 {
     @include sound-theme(-40);
   }
 
-  &.alt-5 {
+  &.sound--5 {
     @include sound-theme(-50);
   }
 
-  &.alt-6 {
+  &.sound--6 {
     @include sound-theme(-60);
   }
 
-  &.alt-7 {
+  &.sound--7 {
     @include sound-theme(-70);
+  }
+}
+
+.sound__key {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.6rem;
+  border-radius: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  box-shadow: -2px 2px 3px transparentize($dark, 0.8);
+  transition: background $sound-activation-delay ease;
+  background-color: lighten($dark, 35%);
+  color: $white;
+  font-size: 1.2rem;
+  font-weight: normal;
+
+  .sound--pressed & {
+    box-shadow: -2px 2px 3px transparentize($dark, 0.6);
+    background-color: lighten($dark, 10%);
   }
 }
 

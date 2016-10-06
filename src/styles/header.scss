@@ -13,7 +13,7 @@
   z-index: 10;
 }
 
-.header--title {
+.header__title {
   color: $blue;
   display: inline-block;
   background: linear-gradient(to right, $blue, $purple);
@@ -25,7 +25,7 @@
   text-transform: lowercase
 }
 
-.header--board-name {
+.header__board-name {
   position: relative;
   color: lighten($dark, 30%);
   font-size: 1.6rem;
@@ -35,7 +35,7 @@
   top: 0.2rem;
 }
 
-.header--board-name-prefix {
+.header__board-name-prefix {
   display: none;
 }
 
@@ -46,11 +46,11 @@
     padding: 0 $default-spacing-desktop;
   }
 
-  .header--board-name-prefix {
+  .header__board-name-prefix {
     display: inline;
   }
 
-  .header--title {
+  .header__title {
     font-size: 3.1rem;
   }
 }

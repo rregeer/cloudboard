@@ -6,22 +6,22 @@
   padding-top: 10%;
 }
 
-.board-picker--message {
+.board-picker__message {
   color: lighten($text, 20%);
   line-height: 2.2rem;
 }
 
-.board-picker--form {
+.board-picker__form {
   margin-bottom: 3rem;
 }
 
-.board-picker--label {
+.board-picker__label {
   color: lighten($text, 50%);
   margin-right: 0.8rem;
   font-size: 2.4rem;
 }
 
-.board-picker--input {
+.board-picker__input {
   border-radius: 3px;
   border: 1px solid darken($white, 10%);
   display: inline-block;
@@ -30,12 +30,12 @@
   padding: 1.2rem 1.4rem;
 }
 
-.board-picker--error {
+.board-picker__error {
   color: $red;
   margin: -2rem 0 3rem;
 }
 
-.board-picker--button {
+.board-picker__button {
   background: $blue linear-gradient(to bottom right, $blue, adjust-hue($purple, -40));
   border: none;
   border-radius: 3px;

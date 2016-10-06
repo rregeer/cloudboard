@@ -1,35 +1,35 @@
 @import 'variables';
 @import 'colors';
 
-$cloudboard--version-color: lighten($dark, 36%);
+$cloudboard__version-color: lighten($dark, 36%);
 
 .cloudboard {
   padding-top: $header-height + $default-spacing / 2;
 }
 
-.board-picker + .cloudboard--version {
+.board-picker + .cloudboard__version {
   position: absolute;
   padding-bottom: 2rem;
   bottom: 0;
 }
 
-.cloudboard--version {
+.cloudboard__version {
   font-size: 1.4rem;
-  color: $cloudboard--version-color;
+  color: $cloudboard__version-color;
   text-align: center;
   padding-bottom: $player-height + 2rem;
   width: 100%
 }
 
-.cloudboard--version-link,
-.cloudboard--version-link:visited {
-  color: $cloudboard--version-color;
+.cloudboard__version-link,
+.cloudboard__version-link:visited {
+  color: $cloudboard__version-color;
 
   &:active,
   &:hover,
   &:focus {
     cursor: pointer;
-    color: darken($cloudboard--version-color, 8%);
+    color: darken($cloudboard__version-color, 8%);
   }
 }
 

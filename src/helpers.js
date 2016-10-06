@@ -1,17 +1,30 @@
 import { letterIndex } from './constants'
 
 export function normalizeSounds(collections) {
-  return Object.keys(collections)
-    .reduce((allSounds, collectionName, collectionIndex) => {
-      const { sounds, name } = collections[collectionName]
-      const collectionSounds = sounds.map((sound, index) => ({
-        ...sound,
-        collection: name,
-        collectionKey: collectionIndex + 1,
-        soundKey: letterIndex[index]
-      }))
-      return [...allSounds, ...collectionSounds]
-    }, [])
+  return collections.reduce((allSounds, { sounds, name: collection, key: collectionKey }) => {
+    const collectionSounds = sounds.map((sound, index) => ({
+      ...sound,
+      collection,
+      collectionKey,
+      key: letterIndex[index]
+    }))
+    return [...allSounds, ...collectionSounds]
+  }, [])
+}
+
+export function addKeys(collections) {
+  return collections.map((collection, index) => ({
+    ...collection,
+    sounds: addKeysToSounds(collection.sounds),
+    key: String(index + 1)
+  }))
+}
+
+function addKeysToSounds(sounds) {
+  return sounds.map((sound, index) => ({
+    ...sound,
+    key: letterIndex[index]
+  }))
 }
 
 export function throttleAction(action, threshhold = 2000) {
