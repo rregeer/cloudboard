@@ -11,7 +11,7 @@ export default function Cloudboard({ children, location }) {
       {children}
       <p className="cloudboard__version">
         <i className="fa fa-copyright"/>
-        {'\u00A0'}
+        // {'\u00A0'}
         <a
           className="cloudboard__version-link"
           href="http://nielsgerritsen.com"
