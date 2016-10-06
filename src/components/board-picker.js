@@ -77,5 +77,5 @@ BoardPicker.propTypes = {
 
 export default connect(
   () => ({}),
-  (dispatch) => bindActionCreators({ push }, dispatch)
+  dispatch => bindActionCreators({ push }, dispatch)
 )(BoardPicker)

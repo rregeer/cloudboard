@@ -23,7 +23,7 @@ export default class SoundEventRepository {
 
     ref.orderByChild('time')
       .startAt(Date.now())
-      .on('child_added', (snapshot) => {
+      .on('child_added', snapshot => {
         onChange(snapshot.val(), snapshot.key)
       })
 

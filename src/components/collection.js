@@ -9,7 +9,7 @@ export default function Collection({ title, name: collectionName, sounds, queue,
       <h2 className="collection--title">
         {title}
       </h2>
-      {sounds.map(({ title: soundTitle, name }) => (
+      {sounds.map(({ title: soundTitle, name }) =>
         <Sound
           title={soundTitle}
           name={name}
@@ -18,7 +18,7 @@ export default function Collection({ title, name: collectionName, sounds, queue,
           collection={collectionName}
           collectionIndex={index}
         />
-      ))}
+      )}
     </div>
   )
 }

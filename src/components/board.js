@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { queue as queueAction } from '../actions'
+import { queue as queueAction } from '../actions/sound-actions'
 import Collection from './collection'
 import Player from './player'
 import { throttleAction } from '../helpers'
@@ -15,8 +15,8 @@ class Board extends Component {
       return null
     }
 
-    const { title: sound } = sounds.find((s) => s.name === playing.sound) || {}
-    const { title: collection } = collections.find((c) => c.name === playing.collection) || {}
+    const { title: sound } = sounds.find(s => s.name === playing.sound) || {}
+    const { title: collection } = collections.find(c => c.name === playing.collection) || {}
 
     return { sound, collection }
   }
@@ -47,7 +47,7 @@ const throttledQueue = throttleAction(queueAction, 600)
 
 export default connect(
   ({ queue, sounds, collections }) => ({ playing: queue[0], sounds, collections }),
-  (dispatch) => bindActionCreators({ queue: throttledQueue }, dispatch)
+  dispatch => bindActionCreators({ queue: throttledQueue }, dispatch)
 )(Board)
 
 Board.propTypes = {

@@ -1,8 +1,15 @@
+import { letterIndex } from './constants'
+
 export function normalizeSounds(collections) {
   return Object.keys(collections)
-    .reduce((allSounds, collectionName) => {
+    .reduce((allSounds, collectionName, collectionIndex) => {
       const { sounds, name } = collections[collectionName]
-      const collectionSounds = sounds.map((s) => ({ ...s, collection: name }))
+      const collectionSounds = sounds.map((sound, index) => ({
+        ...sound,
+        collection: name,
+        collectionKey: collectionIndex + 1,
+        soundKey: letterIndex[index]
+      }))
       return [...allSounds, ...collectionSounds]
     }, [])
 }

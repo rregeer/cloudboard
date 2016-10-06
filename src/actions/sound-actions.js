@@ -11,7 +11,7 @@ export const play = (sound, collection, id) => ({
   collection
 })
 
-export const stopped = (id) => ({
+export const stopped = id => ({
   type: 'STOPPED',
   id
 })

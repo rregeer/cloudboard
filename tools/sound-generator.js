@@ -4,10 +4,10 @@ const MP3 = '.mp3'
 const OUTPUT = './tools/output'
 const INPUT = './tools/input'
 
-const sounds = fs.readdirSync(INPUT).filter((file) => isMp3(file))
+const sounds = fs.readdirSync(INPUT).filter(file => isMp3(file))
 const soundsJson = sounds
   .map(removeExt)
-  .map((sound) => ({
+  .map(sound => ({
     name: toValidFormat(sound),
     title: sound
   }))

@@ -6,25 +6,42 @@ import createLogger from 'redux-logger'
 import collections from '../etc/sound-collections.json'
 import db from './db'
 import { normalizeSounds } from './helpers'
-import queueReducer from './reducer'
+
+import soundReducer from './reducers/sound-reducer'
+import keyReducer from './reducers//key-reducer'
+
 import SoundEventRepository from './sound-event-repository'
 import createQueueMiddleware from './middleware/queue-middleware'
 import playerMiddleware from './middleware/player-middleware'
+import createKeyMiddleware from './middleware/key-middleware'
 
 const soundEventRepository = new SoundEventRepository(db)
 const sounds = normalizeSounds(collections)
 const queueMiddleware = createQueueMiddleware(soundEventRepository)
 
-let middlewares = [playerMiddleware, queueMiddleware, routerMiddleware(hashHistory)]
 const reducer = combineReducers({
-  queue: queueReducer,
+  queue: soundReducer,
+  keys: keyReducer,
   routing: routerReducer,
   collections: () => collections,
   sounds: () => sounds
 })
 
-if (process.env.NODE_ENV === 'development') {
-  middlewares = [...middlewares, createLogger()]
+function createMiddlewares() {
+  const productionMiddlewares = [
+    playerMiddleware,
+    queueMiddleware,
+    routerMiddleware(hashHistory),
+    createKeyMiddleware(document)
+  ]
+
+  const developmentMiddlewares = [createLogger()]
+
+  if (process.env.NODE_ENV === 'development') {
+    return [...productionMiddlewares, ...developmentMiddlewares]
+  }
+
+  return productionMiddlewares
 }
 
-export default createStore(reducer, applyMiddleware(...middlewares))
+export default createStore(reducer, applyMiddleware(...createMiddlewares()))
