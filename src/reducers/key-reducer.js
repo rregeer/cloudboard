@@ -6,6 +6,10 @@ const reducerMap = {
 }
 
 function pressKey(state, { key }) {
+  if (state.includes(key)) {
+    return state
+  }
+
   return [...state, key]
 }
 

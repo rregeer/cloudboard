@@ -3,8 +3,17 @@ import { queue } from '../actions/sound-actions'
 
 export default function createKeyMiddleware(document) {
   return ({ dispatch, getState }) => {
-    document.addEventListener('keydown', e => dispatch(press(e.key)))
-    document.addEventListener('keyup', e => dispatch(release(e.key)))
+    document.addEventListener('keydown', e => {
+      if (onBoard(getState())) {
+        dispatch(press(e.key))
+      }
+    })
+
+    document.addEventListener('keyup', e => {
+      if (onBoard(getState())) {
+        dispatch(release(e.key))
+      }
+    })
 
     return next => action => {
       next(action) // eslint-disable-line callback-return
@@ -16,7 +25,11 @@ export default function createKeyMiddleware(document) {
   }
 }
 
-function handleKeyCombinations({ keys, sounds }, dispatch) {
+function onBoard({ routing }) {
+  return routing.locationBeforeTransitions.pathname !== '/'
+}
+
+function handleKeyCombinations({ keys, sounds, routing }, dispatch) {
   if (keys.length !== 2) {
     return
   }

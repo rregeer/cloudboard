@@ -1,6 +1,6 @@
 @import 'colors';
 
-$sound-activation-delay: 120ms;
+$sound-activation-delay: 80ms;
 
 @mixin sound-theme($degrees) {
   $base-color: adjust-hue($blue, $degrees + 15);
