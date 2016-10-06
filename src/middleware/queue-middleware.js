@@ -1,11 +1,12 @@
 import { play } from '../actions/sound-actions'
+import { QUEUE } from '../constants'
 
 export default function createQueueMiddleware(soundEventRepository) {
   return ({ dispatch }) => {
     let listener = null
 
     return next => action => {
-      if (action.type === 'QUEUE') {
+      if (action.type === QUEUE) {
         queueSound(action, soundEventRepository)
       }
 

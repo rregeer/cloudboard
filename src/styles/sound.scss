@@ -1,6 +1,5 @@
 @import 'colors';
-
-$sound-activation-delay: 80ms;
+@import 'variables';
 
 @mixin sound-theme($degrees) {
   $base-color: adjust-hue($blue, $degrees + 15);
@@ -25,7 +24,7 @@ $sound-activation-delay: 80ms;
   margin: 0 1rem 1rem 0;
   padding: 0.6rem 1.2rem;
   text-transform: uppercase;
-  transition: background $sound-activation-delay ease;
+  transition: background $key-press-animation-speed;
   width: 100%;
 
   &:hover,
@@ -64,12 +63,14 @@ $sound-activation-delay: 80ms;
 
 .sound__key {
   position: absolute;
+  pointer-events: none;
+  opacity: 0;
   top: -0.6rem;
   right: -0.6rem;
   border-radius: 0.5rem;
   padding: 0.15rem 0.5rem;
   box-shadow: -2px 2px 3px transparentize($dark, 0.8);
-  transition: background $sound-activation-delay ease;
+  transition: background, $key-press-animation-speed, opacity $key-press-animation-speed;
   background-color: lighten($dark, 35%);
   color: $white;
   font-size: 1.2rem;
@@ -79,6 +80,14 @@ $sound-activation-delay: 80ms;
     box-shadow: -2px 2px 3px transparentize($dark, 0.6);
     background-color: lighten($dark, 10%);
   }
+}
+
+.sound__key--active {
+  opacity: 0.6;
+}
+
+.sound__key--is-option.sound__key--active {
+  opacity: 1
 }
 
 .sound__key--secondary {

@@ -1,4 +1,4 @@
-import { letterIndex } from './constants'
+import { letterIndex, SECONDARY_KEY } from './constants'
 
 export function normalizeSounds(collections) {
   return collections.reduce((allSounds, { sounds, name: collection, key: collectionKey }) => {
@@ -25,6 +25,16 @@ function addKeysToSounds(sounds) {
     key: letterIndex[index] || letterIndex[index - letterIndex.length],
     isSecondary: index >= letterIndex.length
   }))
+}
+
+export function parseKeys(keys) {
+  const [collectionKey, soundKeyOrSecondaryKey, secondarySoundKey] = keys
+
+  if (soundKeyOrSecondaryKey === SECONDARY_KEY) {
+    return { collectionKey, soundKey: secondarySoundKey, isSecondary: true }
+  }
+
+  return { collectionKey, soundKey: soundKeyOrSecondaryKey, isSecondary: false }
 }
 
 export function throttleAction(action, threshhold = 2000) {

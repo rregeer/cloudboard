@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux'
 import { queue as queueAction } from '../actions/sound-actions'
 import Collection from './collection'
 import Player from './player'
-import { throttleAction } from '../helpers'
+import { throttleAction, parseKeys } from '../helpers'
 
-function Board({ queue, collections, playingSong }) {
+function Board({ queue, collections, playingSong, secondaryMode }) {
   return (
     <div>
       <Player playing={playingSong}/>
@@ -19,6 +19,7 @@ function Board({ queue, collections, playingSong }) {
             collectionKey={collection.key}
             queue={queue}
             index={index}
+            secondaryMode={secondaryMode}
           />
         )}
       </div>
@@ -28,10 +29,12 @@ function Board({ queue, collections, playingSong }) {
 
 function mapStateToProps({ queue, sounds, collections, keys }) {
   const [playing] = queue
+  const { collectionKey, soundKey, isSecondary } = parseKeys(keys)
 
   return {
     playingSong: getPlayingSong(sounds, playing, collections),
-    collections: markPressed(collections, keys)
+    collections: markPressed(collections, collectionKey, soundKey, isSecondary),
+    secondaryMode: isSecondary
   }
 }
 
@@ -52,18 +55,24 @@ function getPlayingSong(sounds, playing, collections) {
   return { sound, collection }
 }
 
-function markPressed(collections, [collectionKey, soundKey]) {
-  return collections.map(collection => ({
-    ...collection,
-    pressed: collection.key === collectionKey,
-    sounds: markPressedSounds(collection.sounds, soundKey)
-  }))
+function markPressed(collections, collectionKey, soundKey, secondaryMode) {
+  return collections.map(collection => {
+    const pressed = collection.key === collectionKey
+    return {
+      ...collection,
+      pressed,
+      sounds: markPressedSounds(collection.sounds, soundKey, secondaryMode, pressed)
+    }
+  })
 }
 
-function markPressedSounds(sounds, soundKey) {
+function markPressedSounds(sounds, soundKey, secondaryMode, collectionPressed) {
   return sounds.map(sound => ({
     ...sound,
-    pressed: !!sound.key && sound.key === soundKey
+    pressed:
+      collectionPressed &&
+      sound.key === soundKey &&
+      secondaryMode === sound.isSecondary
   }))
 }
 
@@ -77,6 +86,7 @@ Board.propTypes = {
     collection: PropTypes.string
   }),
   queue: PropTypes.func.isRequired,
+  secondaryMode: PropTypes.bool.isRequired,
   sounds: PropTypes.array
 }
 

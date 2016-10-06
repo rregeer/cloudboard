@@ -1,17 +1,19 @@
+import { QUEUE, PLAY, STOPPED } from '../constants'
+
 export const queue = (sound, collection) => ({
-  type: 'QUEUE',
+  type: QUEUE,
   sound,
   collection
 })
 
 export const play = (sound, collection, id) => ({
-  type: 'PLAY',
+  type: PLAY,
   id,
   sound,
   collection
 })
 
 export const stopped = id => ({
-  type: 'STOPPED',
+  type: STOPPED,
   id
 })

@@ -1,6 +1,7 @@
 import { press, release } from '../actions/key-actions'
 import { queue } from '../actions/sound-actions'
-import { SECONDARY_KEY } from '../constants'
+import { PRESS } from '../constants'
+import { parseKeys } from '../helpers'
 
 export default function createKeyMiddleware(document) {
   return ({ dispatch, getState }) => {
@@ -10,7 +11,7 @@ export default function createKeyMiddleware(document) {
     return next => action => {
       next(action) // eslint-disable-line callback-return
 
-      if (action.type === 'PRESS') {
+      if (action.type === PRESS) {
         handleKeyCombinations(getState(), dispatch)
       }
     }
@@ -53,14 +54,4 @@ function handleKeyCombinations({ keys, sounds, routing }, dispatch) {
   if (matchingSound) {
     dispatch(queue(matchingSound.name, matchingSound.collection))
   }
-}
-
-function parseKeys(keys) {
-  const [collectionKey, soundKeyOrSecondaryKey, secondarySoundKey] = keys
-
-  if (soundKeyOrSecondaryKey === SECONDARY_KEY && secondarySoundKey) {
-    return { collectionKey, soundKey: secondarySoundKey, isSecondary: true }
-  }
-
-  return { collectionKey, soundKey: soundKeyOrSecondaryKey, isSecondary: false }
 }

@@ -9,6 +9,7 @@
 }
 
 .collection__title {
+  position: relative;
   color: lighten($dark, 10%);
   font-size: 2.6rem;
   font-weight: lighter;
@@ -17,26 +18,32 @@
 
 .collection__key {
   position: relative;
-  top: -0.8rem;
-  left: 0.6rem;
+  top: -1rem;
+  left: 0.8rem;
   border-radius: 0.6rem;
   padding: 0.2rem 0.6rem;
-  transition: background 140ms ease;
-  background-color: lighten($dark, 35%);
+  transition: background $key-press-animation-speed;
+  background-color: lighten($dark, 40%);
   color: $white;
   font-size: 1.3rem;
 }
 
 .collection__key--pressed {
-  background-color: lighten($dark, 10%);
+  background-color: lighten($dark, 12%);
 }
 
-.collection__help-text {
+.collection__help {
   position: relative;
-  top: -0.7rem;
-  left: 1.3rem;
+  opacity: 0;
+  left: 2.5rem;
+  top: -0.4rem;
   color: lighten($dark, 35%);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  transition: opacity $key-press-animation-speed;
+}
+
+.collection__help--active {
+  opacity: 1;
 }
 
 .collection__help-secondary-tag {

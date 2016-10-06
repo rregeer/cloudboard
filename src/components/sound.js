@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 import '../styles/sound.scss'
 
 export default function Sound({
-  title, name, queue, soundKey, pressed, isSecondary, collection, collectionIndex, collectionPressed
+  title, name, queue, soundKey, pressed, isSecondary, secondaryMode, collection, collectionIndex, collectionPressed
 }) {
   return (
     <button
@@ -11,13 +11,14 @@ export default function Sound({
       onClick={() => queue(name, collection)}
     >
       {title}
-      {
-        collectionPressed &&
-        soundKey &&
-        <span className={'sound__key' + (isSecondary ? ' sound__key--secondary' : '')}>
-          {soundKey}
-        </span>
-      }
+      <span className={
+        'sound__key' +
+        (collectionPressed ? ' sound__key--active' : '') +
+        (secondaryMode === isSecondary ? ' sound__key--is-option' : '') +
+        (isSecondary ? ' sound__key--secondary' : '')
+      }>
+        {soundKey}
+      </span>
     </button>
   )
 }
@@ -30,6 +31,7 @@ Sound.propTypes = {
   name: PropTypes.string.isRequired,
   pressed: PropTypes.bool.isRequired,
   queue: PropTypes.func.isRequired,
+  secondaryMode: PropTypes.bool.isRequired,
   soundKey: PropTypes.string,
   title: PropTypes.string.isRequired
 }

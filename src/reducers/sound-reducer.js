@@ -1,8 +1,9 @@
 import { mapReducers } from 'redux-map-reducers'
+import { PLAY, STOPPED } from '../constants'
 
 const reducerMap = {
-  PLAY: playSound,
-  STOPPED: stoppedSound
+  [PLAY]: playSound,
+  [STOPPED]: stoppedSound
 }
 
 function playSound(state, { sound, collection, id }) {

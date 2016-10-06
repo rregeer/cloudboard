@@ -1,8 +1,9 @@
 import { mapReducers } from 'redux-map-reducers'
+import { RELEASE, PRESS } from '../constants'
 
 const reducerMap = {
-  PRESS: pressKey,
-  RELEASE: releaseKey
+  [PRESS]: pressKey,
+  [RELEASE]: releaseKey
 }
 
 function pressKey(state, { key }) {

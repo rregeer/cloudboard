@@ -1,9 +1,11 @@
+import { PRESS, RELEASE } from '../constants'
+
 export const press = key => ({
-  type: 'PRESS',
+  type: PRESS,
   key
 })
 
 export const release = key => ({
-  type: 'RELEASE',
+  type: RELEASE,
   key
 })
