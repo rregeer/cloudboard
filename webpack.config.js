@@ -37,6 +37,7 @@ const config = {
 
 if (env === 'development') {
   config.devtool = 'source-map'
+  config.watch = true
 }
 
 if (env === 'production') {

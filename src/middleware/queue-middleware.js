@@ -1,12 +1,18 @@
+/* global io */
+
 import { play } from '../actions/sound-actions'
 import { QUEUE } from '../constants'
+import { SERVER_QUEUE } from '../../server/constants'
 
 export default function createQueueMiddleware(soundEventRepository) {
   return ({ dispatch }) => {
     let listener = null
 
+    const socket = io.connect(window.location.host)
+
     return next => action => {
       if (action.type === QUEUE) {
+        socket.emit(SERVER_QUEUE, { board: null, sound: action.sound })
         queueSound(action, soundEventRepository)
       }
 

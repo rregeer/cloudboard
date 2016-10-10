@@ -1,0 +1,4 @@
+module.exports = {
+  SERVER_PLAY: 'SERVER/PLAY',
+  SERVER_QUEUE: 'SERVER/QUEUE'
+}
