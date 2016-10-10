@@ -11,12 +11,14 @@ export default function Sound({
       onClick={() => queue(name, collection)}
     >
       {title}
-      <span className={
-        'sound__key' +
-        (collectionPressed ? ' sound__key--active' : '') +
-        (secondaryMode === isSecondary ? ' sound__key--is-option' : '') +
-        (isSecondary ? ' sound__key--secondary' : '')
-      }>
+      <span
+        className={
+          'sound__key' +
+          (collectionPressed ? ' sound__key--active' : '') +
+          (secondaryMode === isSecondary ? ' sound__key--is-option' : '') +
+          (isSecondary ? ' sound__key--secondary' : '')
+        }
+      >
         {soundKey}
       </span>
     </button>

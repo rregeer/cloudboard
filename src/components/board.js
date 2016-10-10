@@ -41,7 +41,7 @@ function mapStateToProps({ queue, sounds, collections, keys }) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    queue: throttleAction(queueAction, 600)
+    queue: throttleAction(queueAction, SOUND_THROTTLE)
   }, dispatch)
 }
 

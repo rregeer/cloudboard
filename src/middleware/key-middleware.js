@@ -41,19 +41,39 @@ function onBoard({ routing }) {
 }
 
 function handleKeyCombinations({ keys, sounds, routing }, dispatch) {
-  if (keys.length !== 2 && keys.length !== 3) {
+  if (!validateAmountOfKeys(keys)) {
     return
   }
 
   const { collectionKey, soundKey, isSecondary } = parseKeys(keys)
 
-  const matchingSound = sounds.find(sound =>
-    sound.collectionKey === collectionKey &&
-    sound.key === soundKey &&
-    sound.isSecondary === isSecondary
-  )
+  if (validateSecondaryKeyCombination(keys, isSecondary)) {
+    return
+  }
+
+  matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, isSecondary)
+}
+
+function validateSecondaryKeyCombination(keys, isSecondary) {
+  return keys.length === 2 && isSecondary
+}
+
+function validateAmountOfKeys(keys) {
+  return keys.length === 2 || keys.length === 3
+}
+
+function matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, isSecondary) {
+  const matchingSound = findSound(sounds, collectionKey, soundKey, isSecondary)
 
   if (matchingSound) {
     dispatch(throttledQueue(matchingSound.name, matchingSound.collection))
   }
+}
+
+function findSound(sounds, collectionKey, soundKey, isSecondary) {
+  return sounds.find(sound =>
+    sound.collectionKey === collectionKey &&
+    sound.key === soundKey &&
+    sound.isSecondary === isSecondary
+  )
 }
