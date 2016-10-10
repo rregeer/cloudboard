@@ -6,6 +6,7 @@ import { queue as queueAction } from '../actions/sound-actions'
 import Collection from './collection'
 import Player from './player'
 import { throttleAction, parseKeys } from '../helpers'
+import { SOUND_THROTTLE } from '../constants'
 
 function Board({ queue, collections, playingSong, secondaryMode }) {
   return (

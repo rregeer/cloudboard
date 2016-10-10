@@ -1,7 +1,9 @@
 import { press, release } from '../actions/key-actions'
 import { queue } from '../actions/sound-actions'
-import { PRESS } from '../constants'
-import { parseKeys } from '../helpers'
+import { PRESS, SOUND_THROTTLE } from '../constants'
+import { parseKeys, throttleAction } from '../helpers'
+
+const throttledQueue = throttleAction(queue, SOUND_THROTTLE)
 
 export default function createKeyMiddleware(document) {
   return ({ dispatch, getState }) => {
@@ -52,6 +54,6 @@ function handleKeyCombinations({ keys, sounds, routing }, dispatch) {
   )
 
   if (matchingSound) {
-    dispatch(queue(matchingSound.name, matchingSound.collection))
+    dispatch(throttledQueue(matchingSound.name, matchingSound.collection))
   }
 }
