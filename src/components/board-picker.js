@@ -5,7 +5,7 @@ import { push } from 'react-router-redux'
 
 import '../styles/board-picker.scss'
 
-const VALIDATION_ERROR = 'Invalid board name, enter a minumum of 3 characters, only use: (a-z, 0-9 \'-\' or \'_\').'
+const VALIDATION_ERROR = 'Invalid name, enter a minumum of 3 characters, only use: (a-z, 0-9 \'-\' or \'_\').'
 
 class BoardPicker extends Component {
   constructor(...args) {
@@ -63,8 +63,7 @@ class BoardPicker extends Component {
         </form>
         {error && <p className="board-picker__error">{error}</p>}
         <p className="board-picker__message">
-          Type a name to join a board,
-          if the board does not exist it is automatically created!
+          Type a board name, then make sure your friends join the same board.
         </p>
       </div>
     )

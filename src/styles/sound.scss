@@ -1,63 +1,26 @@
 @import 'colors';
 @import 'variables';
 
-@mixin sound-theme($degrees) {
-  $base-color: adjust-hue($blue, $degrees + 15);
-  $color: lighten($base-color, 7%);
-  background: $color linear-gradient(to bottom right, $color, darken(adjust-hue($color, 5), 5%));
-
-  &:hover,
-  &:focus {
-    background: $base-color linear-gradient(to bottom right, $base-color, darken(adjust-hue($base-color, 5), 5%));
-  }
-}
-
 .sound {
-  @include sound-theme(0);
-
   position: relative;
-  border: none;
-  border-radius: 3px;
-  color: white;
-  font-size: 1.3rem;
+  background-color: lighten($primary, 46%);
+  border: 1px solid lighten($primary, 6%);
+  border-radius: 0.4rem;
+  color: desaturate($primary, 5%);
+  font-size: 1.2rem;
   font-weight: bold;
   margin: 0 1rem 1rem 0;
   padding: 0.6rem 1.2rem;
   text-transform: uppercase;
-  transition: background $key-press-animation-speed;
   width: 100%;
 
   &:hover,
+  &:active,
   &:focus {
+    outline: none;
     cursor: pointer;
-  }
-
-  &.sound--1 {
-    @include sound-theme(-10);
-  }
-
-  &.sound--2 {
-    @include sound-theme(-20);
-  }
-
-  &.sound--3 {
-    @include sound-theme(-30);
-  }
-
-  &.sound--4 {
-    @include sound-theme(-40);
-  }
-
-  &.sound--5 {
-    @include sound-theme(-50);
-  }
-
-  &.sound--6 {
-    @include sound-theme(-60);
-  }
-
-  &.sound--7 {
-    @include sound-theme(-70);
+    background-color: lighten($primary, 10%);
+    color: $white;
   }
 }
 
@@ -69,7 +32,7 @@
   right: -0.6rem;
   border-radius: 0.5rem;
   padding: 0.15rem 0.5rem;
-  box-shadow: -2px 2px 3px transparentize($dark, 0.8);
+  box-shadow: -1px 1px 2px transparentize($dark, 0.8);
   transition: background, $key-press-animation-speed, opacity $key-press-animation-speed;
   background-color: lighten($dark, 35%);
   color: $white;
