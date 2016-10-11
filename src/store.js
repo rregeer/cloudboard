@@ -3,7 +3,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { hashHistory } from 'react-router'
 import createLogger from 'redux-logger'
 
-import socket from '../socket'
+import socket from './socket'
 import rawCollections from '../etc/sound-collections.json'
 import { normalizeSounds, addKeys } from './helpers'
 
