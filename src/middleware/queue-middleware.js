@@ -1,6 +1,7 @@
 import { play } from '../actions/sound-actions'
 import { QUEUE } from '../constants'
-import { SERVER_QUEUE } from '../../server/constants'
+import { serverQueue } from '../../server/events'
+import shortid from 'shortid'
 
 export default function createQueueMiddleware(soundEventRepository, socket) {
   return ({ dispatch }) => {
@@ -8,8 +9,7 @@ export default function createQueueMiddleware(soundEventRepository, socket) {
 
     return next => action => {
       if (action.type === QUEUE) {
-        socket.emit(SERVER_QUEUE, { board: null, sound: action.sound })
-        queueSound(action, soundEventRepository)
+        handleQueue(action, socket, soundEventRepository)
       }
 
       if (action.type === '@@router/LOCATION_CHANGE') {
@@ -19,6 +19,15 @@ export default function createQueueMiddleware(soundEventRepository, socket) {
       next(action)
     }
   }
+}
+
+function handleQueue(action, socket, soundEventRepository) {
+  const { collection, sound } = action
+  const id = shortid.generate()
+  const [event, data] = serverQueue(id, collection, sound)
+
+  socket.emit(event, data)
+  queueSound(action, soundEventRepository)
 }
 
 function queueSound(action, soundEventRepository) {
@@ -44,6 +53,6 @@ function handleLocationChange(listener, action, soundEventRepository, dispatch) 
 function changeBoard(board, soundEventRepository, dispatch) {
   soundEventRepository.setBoard(board)
   return soundEventRepository.listenForChanges(({ sound, collection }, id) => {
-    dispatch(play(sound, collection, id))
+    dispatch(play(id, collection, sound))
   })
 }

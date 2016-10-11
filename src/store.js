@@ -13,7 +13,7 @@ import keyReducer from './reducers//key-reducer'
 
 import SoundEventRepository from './sound-event-repository'
 import createQueueMiddleware from './middleware/queue-middleware'
-import playerMiddleware from './middleware/player-middleware'
+import createPlayerMiddleware from './middleware/player-middleware'
 import createKeyMiddleware from './middleware/key-middleware'
 
 const socket = io.connect(window.location.host)
@@ -31,7 +31,7 @@ const reducer = combineReducers({
 
 function createMiddlewares() {
   const productionMiddlewares = [
-    playerMiddleware,
+    createPlayerMiddleware(socket),
     createQueueMiddleware(soundEventRepository, socket),
     routerMiddleware(hashHistory),
     createKeyMiddleware(document)

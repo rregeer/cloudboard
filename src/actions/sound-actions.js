@@ -6,7 +6,7 @@ export const queue = (sound, collection) => ({
   collection
 })
 
-export const play = (sound, collection, id) => ({
+export const play = (id, collection, sound) => ({
   type: PLAY,
   id,
   sound,

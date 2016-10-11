@@ -1,17 +1,30 @@
-import { stopped } from '../actions/sound-actions'
+import { stopped, play } from '../actions/sound-actions'
 import { PLAY } from '../constants'
+import { SERVER_PLAY } from '../../server/constants'
 
 const SOUND_TIMEOUT = 10000
 
-export default function playerMiddleware({ dispatch }) {
-  return next => action => {
-    if (action.type === PLAY) {
-      const { sound, collection, id } = action
-      playSound(sound, collection, () => dispatch(stopped(id)))
-    }
+export default function createPlayerMiddleware(socket) {
+  return ({ dispatch }) => {
+    socket.on(SERVER_PLAY, event => {
+      handlePlay(event, dispatch)
+    })
 
-    next(action)
+    return next => action => {
+      if (action.type === PLAY) {
+        const { id, collection, sound } = action
+        playSound(sound, collection, () => dispatch(stopped(id)))
+      }
+
+      next(action)
+    }
   }
+}
+
+function handlePlay(event, dispatch) {
+  const { id, collection, sound } = event
+
+  dispatch(play(id, collection, sound))
 }
 
 function playSound(sound, collection, onEnded) {
