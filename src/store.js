@@ -7,12 +7,14 @@ import socket from './socket'
 import rawCollections from '../etc/sound-collections.json'
 import { normalizeSounds, addKeys } from './helpers'
 
+import boardReducer from './reducers/board-reducer'
 import soundReducer from './reducers/sound-reducer'
 import keyReducer from './reducers//key-reducer'
 
 import createQueueMiddleware from './middleware/queue-middleware'
 import createPlayerMiddleware from './middleware/player-middleware'
 import createKeyMiddleware from './middleware/key-middleware'
+import boardMiddleware from './middleware/board-middleware'
 
 const collections = addKeys(rawCollections)
 const sounds = normalizeSounds(collections)
@@ -21,12 +23,14 @@ const reducer = combineReducers({
   queue: soundReducer,
   keys: keyReducer,
   routing: routerReducer,
+  board: boardReducer,
   collections: () => collections,
   sounds: () => sounds
 })
 
 function createMiddlewares() {
   const productionMiddlewares = [
+    boardMiddleware,
     createPlayerMiddleware(socket),
     createQueueMiddleware(socket),
     routerMiddleware(hashHistory),

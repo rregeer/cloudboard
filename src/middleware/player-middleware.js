@@ -5,9 +5,9 @@ import { SERVER_PLAY } from '../../server/constants'
 const SOUND_TIMEOUT = 10000
 
 export default function createPlayerMiddleware(socket) {
-  return ({ dispatch }) => {
+  return ({ dispatch, getState }) => {
     socket.on(SERVER_PLAY, event => {
-      handlePlay(event, dispatch)
+      handlePlay(dispatch, getState(), event)
     })
 
     return next => action => {
@@ -21,10 +21,12 @@ export default function createPlayerMiddleware(socket) {
   }
 }
 
-function handlePlay(event, dispatch) {
-  const { id, collection, sound } = event
+function handlePlay(dispatch, state, event) {
+  const { id, collection, sound, board } = event
 
-  dispatch(play(id, collection, sound))
+  if (board === state.board) {
+    dispatch(play(id, collection, sound))
+  }
 }
 
 function playSound(sound, collection, onEnded) {

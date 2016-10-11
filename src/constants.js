@@ -13,4 +13,6 @@ export const QUEUE = 'QUEUE'
 export const PLAY = 'PLAY'
 export const STOPPED = 'STOPPED'
 
+export const CHANGE_BOARD = 'CHANGE_BOARD'
+
 export const SOUND_THROTTLE = 500

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node server",
+    "watch": "NODE_ENV=development webpack",
     "build": "NODE_ENV=production webpack",
     "test": "eslint .",
     "generate": "mkdir -p tools/output; rm -Rf tools/output/*; node ./tools/sound-generator.js"
