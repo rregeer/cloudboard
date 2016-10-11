@@ -10,7 +10,7 @@ Clone this repo, make sure you have node 6 or higher. Then run:
 
 ```
 npm install
-npm watch
+npm start
 ```
 
 You can now start coding 😎. When you make a pull request it will be automatically built and deployed after it is merged.

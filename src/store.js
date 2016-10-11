@@ -2,22 +2,18 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { hashHistory } from 'react-router'
 import createLogger from 'redux-logger'
-import io from 'socket.io-client'
 
+import socket from '../socket'
 import rawCollections from '../etc/sound-collections.json'
-import db from './db'
 import { normalizeSounds, addKeys } from './helpers'
 
 import soundReducer from './reducers/sound-reducer'
 import keyReducer from './reducers//key-reducer'
 
-import SoundEventRepository from './sound-event-repository'
 import createQueueMiddleware from './middleware/queue-middleware'
 import createPlayerMiddleware from './middleware/player-middleware'
 import createKeyMiddleware from './middleware/key-middleware'
 
-const socket = io.connect(window.location.host)
-const soundEventRepository = new SoundEventRepository(db)
 const collections = addKeys(rawCollections)
 const sounds = normalizeSounds(collections)
 
@@ -32,7 +28,7 @@ const reducer = combineReducers({
 function createMiddlewares() {
   const productionMiddlewares = [
     createPlayerMiddleware(socket),
-    createQueueMiddleware(soundEventRepository, socket),
+    createQueueMiddleware(socket),
     routerMiddleware(hashHistory),
     createKeyMiddleware(document)
   ]

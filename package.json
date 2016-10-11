@@ -1,6 +1,6 @@
 {
   "name": "cloudboard",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "A shared soundboard. �",
   "main": "server/index.js",
   "engines": {
@@ -8,11 +8,7 @@
   },
   "scripts": {
     "start": "node server",
-    "watch": "NODE_ENV=development webpack",
-    "watch:serve": "NODE_ENV=development webpack-dev-server --port 8011",
-    "build": "NODE_ENV=production webpack; npm run dist",
-    "build:heroku": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "dist": "mkdir -p dist; rm -Rf dist/*; cp index.html dist; cp favicon.png dist; cp -R sounds dist; cp -R public dist",
+    "build": "NODE_ENV=production webpack",
     "test": "eslint .",
     "generate": "mkdir -p tools/output; rm -Rf tools/output/*; node ./tools/sound-generator.js"
   },
@@ -35,7 +31,6 @@
   "dependencies": {
     "eslint-config-ngerritsen": "^0.1.8",
     "express": "^4.14.0",
-    "firebase": "^3.2.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
