@@ -5,7 +5,7 @@ $input-height: 4.5rem;
 
 .board-picker {
   text-align: center;
-  padding-top: 10%;
+  padding: 12% 2rem;
 }
 
 .board-picker__message {
@@ -28,7 +28,7 @@ $input-height: 4.5rem;
   border: 1px solid darken($white, 10%);
   border-radius: 0.6rem;
   display: inline-block;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin: 0 0.8rem 0.8rem 0;
   height: $input-height;
   line-height: $input-height;
@@ -37,16 +37,21 @@ $input-height: 4.5rem;
 
 .board-picker__error {
   color: $red;
-  margin: -2rem 0 3rem;
+  margin: -2.3rem 0 3rem;
+}
+
+.board-picker__button,
+.board-picker__input {
+  width: 100%;
 }
 
 .board-picker__button {
-  background: $secondary linear-gradient(to right, $secondary, 5%, adjust-hue($secondary, -10));
+  background: $secondary linear-gradient(to right, $secondary, 5%, adjust-hue($secondary, -16));
   border: none;
   border-radius: 0.6rem;
   color: white;
   display: inline-block;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   height: $input-height;
   line-height: $input-height;
   padding: 0 1.4rem;
@@ -63,5 +68,12 @@ $input-height: 4.5rem;
   &.is-disabled:focus {
     cursor: default;
     opacity: 0.6
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .board-picker__button,
+  .board-picker__input {
+    width: auto;
   }
 }
