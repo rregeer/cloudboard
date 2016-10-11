@@ -10,6 +10,7 @@ import Board from './components/board'
 import BoardPicker from './components/board-picker'
 
 import './styles/base.scss'
+import './styles/loader.scss'
 
 const history = syncHistoryWithStore(hashHistory, store)
 const rootEl = document.getElementById('root')

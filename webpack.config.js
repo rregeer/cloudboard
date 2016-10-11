@@ -1,11 +1,25 @@
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const env = process.env.NODE_ENV
 const config = {
-  entry: './src/main.js',
+  entry: {
+    app: './src/main.js',
+    vendor: [
+      'react',
+      'react-dom',
+      'react-redux',
+      'react-router',
+      'react-router-redux',
+      'redux',
+      'redux-map-reducers',
+      'shortid'
+    ]
+  },
   output: {
     path: 'public',
-    publicPath: 'public',
+    publicPath: '/',
     filename: 'bundle.js'
   },
   module: {
@@ -13,7 +27,10 @@ const config = {
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        query: {
+          cacheDirectory: true
+        }
       },
       {
         test: /\.json$/,
@@ -21,12 +38,22 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: ExtractTextPlugin.extract('css!sass')
       }
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Cloudboard',
+      filename: 'index.html',
+      template: './src/index.html',
+      inject: true,
+      favicon: './public/favicon.png',
+      hash: true
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new ExtractTextPlugin('style.css'),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(env)
