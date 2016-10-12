@@ -1,40 +1,33 @@
 @import 'variables';
 @import 'colors';
 
-$cloudboard__version-color: lighten($dark, 36%);
-
 .cloudboard {
-  padding-top: $header-height + $default-spacing / 2;
-}
-
-.board-picker + .cloudboard__version {
-  position: absolute;
-  padding-bottom: 2rem;
-  bottom: 0;
+  padding-top: $header-height + $default-spacing * 2;
+  padding-bottom: $default-spacing * 5
 }
 
 .cloudboard__version {
   font-size: 1.4rem;
-  color: $cloudboard__version-color;
+  color: $display-text-secondary;
   text-align: center;
-  padding-bottom: $player-height + 2rem;
   width: 100%
 }
 
 .cloudboard__version-link,
 .cloudboard__version-link:visited {
-  color: $cloudboard__version-color;
+  color: $display-text-secondary;
 
   &:active,
   &:hover,
   &:focus {
     cursor: pointer;
-    color: darken($cloudboard__version-color, 8%);
+    color: darken($display-text-secondary, 8%);
   }
 }
 
 @media screen and (min-width: 480px) {
   .cloudboard {
-    padding-top: $header-height-desktop + $default-spacing;
+    padding-top: $header-height-desktop + $default-spacing-desktop * 2;
+    padding-bottom: $default-spacing-desktop * 3
   }
 }

@@ -3,7 +3,7 @@
 
 .header {
   background-color: $white;
-  border-bottom: 1px solid darken($white, 10%);
+  border-bottom: 1px solid $border;
   height: $header-height;
   line-height: $header-height;
   padding: 0 $default-spacing;
@@ -16,7 +16,7 @@
 .header__title {
   color: $blue;
   display: inline-block;
-  background: linear-gradient(to right, $primary, $secondary);
+  background: linear-gradient(to right, adjust-hue($primary, 10), adjust-hue($secondary, -10));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 2.2rem;
@@ -27,7 +27,7 @@
 
 .header__board-name {
   position: relative;
-  color: lighten($dark, 32%);
+  color: $display-text-secondary;
   font-size: 1.6rem;
   font-weight: bold;
   float: right;

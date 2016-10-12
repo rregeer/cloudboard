@@ -46,7 +46,6 @@ class BoardPicker extends Component {
     return (
       <div className="board-picker">
         <form className="board-picker__form" onSubmit={this.handleSubmit.bind(this)}>
-          <label className="board-picker__label">#</label>
           <input
             className="board-picker__input"
             type="text"

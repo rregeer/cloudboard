@@ -2,17 +2,18 @@
 @import 'colors';
 
 .collection {
-  background-color: transparentize($white, 0.2);
-  box-shadow: 0 3px 4px darken($white, 5%);
   margin-bottom: 4rem;
-  padding: 2rem $default-spacing 2rem;
+  padding: 0 $default-spacing;
 }
 
 .collection__title {
   position: relative;
-  color: lighten($dark, 12%);
-  font-size: 2.6rem;
-  font-weight: lighter;
+  color: lighten($dark, 10%);
+  border-bottom: 1px solid darken($light, 8%);
+  font-size: 1.8rem;
+  height: 3.3rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
   margin: 0 0 2rem 0;
 }
 
@@ -57,9 +58,5 @@
   .collection {
     padding-left: $default-spacing-desktop;
     padding-right: $default-spacing-desktop;
-  }
-
-  .collection__title {
-    font-size: 2.8rem;
   }
 }
