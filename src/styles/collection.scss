@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'colors';
 
+$sound-key-size: 1.8rem;
+
 .collection {
   margin-bottom: 4rem;
   padding: 0 $default-spacing;
@@ -18,11 +20,16 @@
 }
 
 .collection__key {
+  display: inline-block;
   position: relative;
   top: -1rem;
   left: 0.4rem;
   border-radius: 0.4rem;
-  padding: 0.1rem 0.4rem;
+  text-align: center;
+  width: $sound-key-size;
+  height: $sound-key-size;
+  line-height: $sound-key-size;
+  padding: 0;
   transition: background $key-press-animation-speed;
   color: $display-text-secondary;
   font-size: 1.3rem;
@@ -50,7 +57,7 @@
 .collection__help-secondary-tag {
   color: $white;
   border-radius: 0.4rem;
-  background-color: desaturate(lighten($orange, 12%), 15%);
+  background-color: lighten($orange, 12%);
   padding: 0.15rem 0.5rem;
 }
 
