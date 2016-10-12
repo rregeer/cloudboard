@@ -10,7 +10,7 @@ $input-height: 4.5rem;
   text-align: center;
   padding: 2.6rem 1.6rem 1.6rem;
   max-width: 36rem;
-  margin: 14vh auto 21vh;
+  margin: 12vh auto 18vh;
 }
 
 .board-picker__message {
@@ -72,5 +72,11 @@ $input-height: 4.5rem;
   &.is-disabled:focus {
     cursor: default;
     opacity: 0.6
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .board-picker {
+    margin: 14vh auto 21vh;
   }
 }
