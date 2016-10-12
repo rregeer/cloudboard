@@ -12,6 +12,7 @@ export const PRESS = 'PRESS'
 export const QUEUE = 'QUEUE'
 export const PLAY = 'PLAY'
 export const STOPPED = 'STOPPED'
+export const UNLOCK = 'UNLOCK'
 
 export const CHANGE_BOARD = 'CHANGE_BOARD'
 

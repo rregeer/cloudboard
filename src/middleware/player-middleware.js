@@ -1,10 +1,8 @@
 import { stopped, play } from '../actions/sound-actions'
-import { PLAY } from '../constants'
+import { PLAY, UNLOCK } from '../constants'
 import { SERVER_PLAY } from '../../server/constants'
 
-const SOUND_TIMEOUT = 10000
-
-export default function createPlayerMiddleware(socket) {
+export default function createPlayerMiddleware(socket, audioPlayer) {
   return ({ dispatch, getState }) => {
     socket.on(SERVER_PLAY, event => {
       handlePlay(dispatch, getState(), event)
@@ -13,7 +11,11 @@ export default function createPlayerMiddleware(socket) {
     return next => action => {
       if (action.type === PLAY) {
         const { id, collection, sound } = action
-        playSound(sound, collection, () => dispatch(stopped(id)))
+        playSound(sound, id, collection, audioPlayer, dispatch)
+      }
+
+      if (action.type === UNLOCK) {
+        audioPlayer.unlock()
       }
 
       next(action)
@@ -24,26 +26,15 @@ export default function createPlayerMiddleware(socket) {
 function handlePlay(dispatch, state, event) {
   const { id, collection, sound, board } = event
 
-  if (board === state.board) {
+  if (board === state.board && state.unlocked) {
     dispatch(play(id, collection, sound))
   }
 }
 
-function playSound(sound, collection, onEnded) {
+function playSound(sound, id, collection, audioPlayer, dispatch) {
   const url = `./sounds/${collection}/${sound}.mp3`
-  const audio = new Audio(url)
-  let ended = false
 
-  audio.onended = () => {
-    onEnded()
-    ended = true
-  }
-
-  setTimeout(() => {
-    if (!ended) {
-      onEnded()
-    }
-  }, SOUND_TIMEOUT)
-
-  audio.play()
+  audioPlayer.play(url, () => {
+    dispatch(stopped(id))
+  })
 }

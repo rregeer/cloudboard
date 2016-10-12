@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
+
 import Header from './header'
 import { version } from '../../package.json'
+
 import '../styles/cloudboard.scss'
 
 export default function Cloudboard({ children, location }) {

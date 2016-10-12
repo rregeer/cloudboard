@@ -3,15 +3,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { queue as queueAction } from '../actions/sound-actions'
+import { unlock as unlockAction } from '../actions/unlock-actions'
 import Collection from './collection'
 import Player from './player'
 import { throttleAction, parseKeys } from '../helpers'
 import { SOUND_THROTTLE } from '../constants'
 
-function Board({ queue, collections, playingSong, secondaryMode }) {
+function Board({ queue, collections, playingSong, secondaryMode, unlock, unlocked }) {
   return (
     <div>
-      <Player playing={playingSong}/>
+      <Player playing={playingSong} unlock={unlock} unlocked={unlocked}/>
       <div className="board__collections">
         {collections.map((collection, index) =>
           <Collection
@@ -28,20 +29,22 @@ function Board({ queue, collections, playingSong, secondaryMode }) {
   )
 }
 
-function mapStateToProps({ queue, sounds, collections, keys }) {
+function mapStateToProps({ queue, sounds, collections, keys, unlocked }) {
   const [playing] = queue
   const { collectionKey, soundKey, isSecondary } = parseKeys(keys)
 
   return {
     playingSong: getPlayingSong(sounds, playing, collections),
     collections: markPressed(collections, collectionKey, soundKey, isSecondary),
-    secondaryMode: isSecondary
+    secondaryMode: isSecondary,
+    unlocked
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    queue: throttleAction(queueAction, SOUND_THROTTLE)
+    queue: throttleAction(queueAction, SOUND_THROTTLE),
+    unlock: unlockAction
   }, dispatch)
 }
 
@@ -88,7 +91,9 @@ Board.propTypes = {
   }),
   queue: PropTypes.func.isRequired,
   secondaryMode: PropTypes.bool.isRequired,
-  sounds: PropTypes.array
+  sounds: PropTypes.array,
+  unlock: PropTypes.func.isRequired,
+  unlocked: PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)
