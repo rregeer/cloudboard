@@ -860,5 +860,43 @@
         "title": "Willy en Max"
       }
     ]
+  },
+  {
+    "name": "broccoli-meneer",
+    "title": "Broccoli meneer",
+    "sounds": [
+      {
+        "name": "beste-van-amsterdam-nooord",
+        "title": "Beste van Amsterdam nooord"
+      },
+      {
+        "name": "bloemkoool-spinaazi",
+        "title": "Bloemkoool & spinaazi"
+      },
+      {
+        "name": "broccooli",
+        "title": "Broccooli"
+      },
+      {
+        "name": "broccoooli",
+        "title": "Broccoooli"
+      },
+      {
+        "name": "heeerlijk-overheerlijk",
+        "title": "Heeerlijk overheerlijk"
+      },
+      {
+        "name": "kipfileeet",
+        "title": "Kipfileeet"
+      },
+      {
+        "name": "vlaaa-met-rode-bessen",
+        "title": "Vlaaa met rode bessen"
+      },
+      {
+        "name": "vol-met-vitaminen",
+        "title": "Vol met vitaminen"
+      }
+    ]
   }
 ]
