@@ -1,15 +1,15 @@
 @import 'colors';
 
 .loader-container {
-  margin-top: 12rem;
+  margin-top: 20vh;
 }
 
 .loader:before,
 .loader:after,
 .loader {
   border-radius: 50%;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation: load 1.4s infinite ease-in-out;
@@ -17,9 +17,9 @@
 }
 
 .loader {
-  color: lighten($dark, 20%);
+  color: $display-text;
   font-size: 1rem;
-  margin: 8rem auto;
+  margin: 0 auto;
   position: relative;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
@@ -30,13 +30,13 @@
 }
 
 .loader:before {
-  left: -3rem;
+  left: -2.2rem;
   -webkit-animation-delay: -0.26s;
   animation-delay: -0.26s;
 }
 
 .loader:after {
-  left: 3rem;
+  left: 2.2rem;
 }
 
 .loader:before,

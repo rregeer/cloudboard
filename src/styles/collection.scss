@@ -20,26 +20,26 @@
 .collection__key {
   position: relative;
   top: -1rem;
-  left: 0.8rem;
-  border-radius: 0.6rem;
-  padding: 0.2rem 0.6rem;
+  left: 0.4rem;
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.4rem;
   transition: background $key-press-animation-speed;
-  background-color: lighten($dark, 40%);
-  color: $white;
+  color: $display-text-secondary;
   font-size: 1.3rem;
 }
 
 .collection__key--pressed {
-  background-color: lighten($dark, 14%);
+  background-color: $display-text-secondary;
+  color: $white;
 }
 
 .collection__help {
   position: relative;
   opacity: 0;
-  left: 2.5rem;
-  top: -0.4rem;
-  color: lighten($dark, 35%);
-  font-size: 1.3rem;
+  left: 1.5rem;
+  top: 0;
+  color: $display-text-secondary;
+  font-size: 1.2rem;
   transition: opacity $key-press-animation-speed;
 }
 
