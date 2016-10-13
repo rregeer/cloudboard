@@ -34,7 +34,7 @@ function createReducer(remoteMode, isMobileBrowser) {
   const collections = addKeys(rawCollections)
   const sounds = normalizeSounds(collections)
 
-  combineReducers({
+  return combineReducers({
     queue: soundReducer,
     keys: keyReducer,
     routing: routerReducer,
