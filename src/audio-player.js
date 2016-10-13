@@ -1,6 +1,6 @@
 const SOUND_TIMEOUT = 13000
 
-function createAudioPlayer(slots = 100) {
+function createAudioPlayer(slots = 24) {
   let audioSlots = createAudioSlots(slots)
 
   function unlock() {

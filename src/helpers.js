@@ -53,10 +53,3 @@ export function throttleAction(action, threshhold = 2000) {
     return action(...args)
   }
 }
-
-export function isMobileSafari() {
-  return (
-    navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
-    navigator.userAgent.match(/AppleWebKit/)
-  )
-}
