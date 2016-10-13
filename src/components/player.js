@@ -23,7 +23,7 @@ export default function Player({ playing }) {
             )
           }
 
-          return <span className="player__secondary">'Pretty quiet in here!'</span>
+          return <span className="player__secondary">Much quiet in here!</span>
         })()}
       </p>
     </div>
