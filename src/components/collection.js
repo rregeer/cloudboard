@@ -3,19 +3,27 @@ import Sound from './sound'
 
 import '../styles/collection.scss'
 
-export default function Collection({ title, name, collectionKey, pressed, sounds, secondaryMode, queue, index }) {
+export default function Collection({
+  title, name, collectionKey, pressed, sounds, secondaryMode, queue, index, isMobileBrowser
+}) {
   return (
     <div className="collection">
       <h2 className="collection__title">
         {title}
-        <span className={'collection__key' + (pressed ? ' collection__key--pressed' : '')}>
-          {collectionKey}
-        </span>
-        <span className={'collection__help' + (pressed ? ' collection__help--active' : '')}>
-          Press <strong>Ctrl + KEY</strong> to trigger <span className="collection__help-secondary-tag">
-            secondary
-          </span> keys
-        </span>
+        {
+          !isMobileBrowser &&
+          <span className={'collection__key' + (pressed ? ' collection__key--pressed' : '')}>
+            {collectionKey}
+          </span>
+        }
+        {
+          !isMobileBrowser &&
+          <span className={'collection__help' + (pressed ? ' collection__help--active' : '')}>
+            Press <strong>Ctrl + KEY</strong> to trigger <span className="collection__help-secondary-tag">
+              secondary
+            </span> keys
+          </span>
+        }
       </h2>
       {sounds.map(sound =>
         <Sound
@@ -34,8 +42,9 @@ export default function Collection({ title, name, collectionKey, pressed, sounds
 }
 
 Collection.propTypes = {
-  collectionKey: PropTypes.string.isRequired,
+  collectionKey: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
+  isMobileBrowser: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   pressed: PropTypes.bool.isRequired,
   queue: PropTypes.func.isRequired,

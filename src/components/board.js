@@ -3,16 +3,26 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { queue as queueAction } from '../actions/sound-actions'
-import { unlock as unlockAction } from '../actions/unlock-actions'
 import Collection from './collection'
 import Player from './player'
-import { throttleAction, parseKeys } from '../helpers'
+import { throttleAction } from '../helpers'
 import { SOUND_THROTTLE } from '../constants'
 
-function Board({ queue, collections, playingSong, secondaryMode, unlock, unlocked }) {
+import '../styles/board.scss'
+
+function Board({ queue, collections, playingSong, secondaryMode, remoteMode, isMobileBrowser }) {
   return (
     <div>
-      <Player playing={playingSong} unlock={unlock} unlocked={unlocked}/>
+      {(() => {
+        if (remoteMode) {
+          return <div className="board__remote-message">
+            <i className="fa fa-cloud board__remote-icon"/> Remote mode
+          </div>
+        }
+
+        return <Player playing={playingSong} remoteMode={remoteMode}/>
+      })()}
+
       <div className="board__collections">
         {collections.map((collection, index) =>
           <Collection
@@ -22,6 +32,8 @@ function Board({ queue, collections, playingSong, secondaryMode, unlock, unlocke
             queue={queue}
             index={index}
             secondaryMode={secondaryMode}
+            remoteMode={remoteMode}
+            isMobileBrowser={isMobileBrowser}
           />
         )}
       </div>
@@ -29,22 +41,22 @@ function Board({ queue, collections, playingSong, secondaryMode, unlock, unlocke
   )
 }
 
-function mapStateToProps({ queue, sounds, collections, keys, unlocked }) {
+function mapStateToProps({ queue, sounds, collections, keys, remoteMode, isMobileBrowser }) {
   const [playing] = queue
-  const { collectionKey, soundKey, isSecondary } = parseKeys(keys)
+  const { collectionKey, soundKey, secondaryMode } = keys
 
   return {
     playingSong: getPlayingSong(sounds, playing, collections),
-    collections: markPressed(collections, collectionKey, soundKey, isSecondary),
-    secondaryMode: isSecondary,
-    unlocked
+    collections: markPressed(collections, collectionKey, soundKey, secondaryMode),
+    secondaryMode,
+    remoteMode,
+    isMobileBrowser
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    queue: throttleAction(queueAction, SOUND_THROTTLE),
-    unlock: unlockAction
+    queue: throttleAction(queueAction, SOUND_THROTTLE)
   }, dispatch)
 }
 
@@ -85,15 +97,15 @@ Board.propTypes = {
     title: PropTypes.string.isRequired,
     sounds: PropTypes.array.isRequired
   })).isRequired,
+  isMobileBrowser: PropTypes.bool.isRequired,
   playingSong: PropTypes.shape({
     sound: PropTypes.string,
     collection: PropTypes.string
   }),
   queue: PropTypes.func.isRequired,
+  remoteMode: PropTypes.bool.isRequired,
   secondaryMode: PropTypes.bool.isRequired,
-  sounds: PropTypes.array,
-  unlock: PropTypes.func.isRequired,
-  unlocked: PropTypes.bool.isRequired
+  sounds: PropTypes.array
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

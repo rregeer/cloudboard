@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 /* global Modernizr */
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
@@ -7,59 +8,60 @@ import createLogger from 'redux-logger'
 
 import socket from './socket'
 import rawCollections from '../etc/sound-collections.json'
-import { normalizeSounds, addKeys } from './helpers'
-import createAudioPlayer from './audio-player'
+import { normalizeSounds, addKeys, isMobileBrowser as checkIfMobileBrowser } from './helpers'
 
 import boardReducer from './reducers/board-reducer'
 import soundReducer from './reducers/sound-reducer'
 import keyReducer from './reducers//key-reducer'
-import unlockReducer from './reducers//unlock-reducer'
 
 import createQueueMiddleware from './middleware/queue-middleware'
 import createPlayerMiddleware from './middleware/player-middleware'
 import createKeyMiddleware from './middleware/key-middleware'
-import boardMiddleware from './middleware/board-middleware'
 
 function ownCreateStore(callback) {
   Modernizr.on('videoautoplay', hasAutoPlay => {
-    const audioPlayer = createAudioPlayer(21)
+    const isMobileBrowser = checkIfMobileBrowser()
+    const remoteMode = isMobileBrowser || !hasAutoPlay
     const collections = addKeys(rawCollections)
     const sounds = normalizeSounds(collections)
-
-    const initialState = {
-      unlocked: hasAutoPlay
-    }
 
     const reducer = combineReducers({
       queue: soundReducer,
       keys: keyReducer,
       routing: routerReducer,
       board: boardReducer,
-      unlocked: unlockReducer,
+      remoteMode: () => remoteMode,
       collections: () => collections,
-      sounds: () => sounds
+      sounds: () => sounds,
+      isMobileBrowser: () => isMobileBrowser
     })
 
-    function createMiddlewares() {
-      const productionMiddlewares = [
-        boardMiddleware,
-        createPlayerMiddleware(socket, audioPlayer),
-        createQueueMiddleware(socket),
-        routerMiddleware(hashHistory),
-        createKeyMiddleware(document)
-      ]
+    const middlewares = createMiddlewares(remoteMode, isMobileBrowser)
+    const store = createStore(reducer, applyMiddleware(...middlewares))
 
-      const developmentMiddlewares = [createLogger()]
-
-      if (process.env.NODE_ENV === 'development') {
-        return [...productionMiddlewares, ...developmentMiddlewares]
-      }
-
-      return productionMiddlewares
-    }
-
-    callback(createStore(reducer, initialState, applyMiddleware(...createMiddlewares())))
+    return callback(store)
   })
+}
+
+function createMiddlewares(remoteMode, isMobileBrowser) {
+  const middlewares = [
+    createQueueMiddleware(socket),
+    routerMiddleware(hashHistory)
+  ]
+
+  if (!remoteMode) {
+    middlewares.push(createPlayerMiddleware(socket))
+  }
+
+  if (!isMobileBrowser) {
+    middlewares.push(createKeyMiddleware(document))
+  }
+
+  if (process.env.NODE_ENV === 'development') {
+    middlewares.push(createLogger())
+  }
+
+  return middlewares
 }
 
 export default ownCreateStore

@@ -1,8 +1,6 @@
 @import 'colors';
 @import 'variables';
 
-$unlock-height: 2.7rem;
-
 .player {
   background: $light;
   border-top: 1px solid darken($light, 10%);
@@ -11,6 +9,7 @@ $unlock-height: 2.7rem;
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: 1.4rem;
   z-index: 11;
 }
 
@@ -24,41 +23,19 @@ $unlock-height: 2.7rem;
   width: 3.6rem;
 }
 
-.player__icon--locked {
-  opacity: 0.6;
-}
-
 .player__secondary {
   opacity: 0.6;
 }
 
-.player__unlock {
-  position: absolute;
-  top: 1.3rem;
-  right: $default-spacing;
-  background: $white;
-  border: 1px solid $red;
-  border-radius: 0.4rem;
-  padding: 0 1rem;
-  margin-left: 1.7rem;
-  height: $unlock-height;
-  line-height: $unlock-height;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: $red;
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
-    background: $red;
-    color: $white;
-    outline: none;
-  }
-}
-
 @media screen and (min-width: 480px) {
   .player {
+    height: $player-height-desktop;
     padding: 0 $default-spacing-desktop;
+    font-size: 1.6rem;
+  }
+
+  .player__message {
+    line-height: $player-height-desktop;
   }
 
   .player__unlock {

@@ -1,14 +1,14 @@
 import { press, release } from '../actions/key-actions'
 import { queue } from '../actions/sound-actions'
-import { PRESS, SOUND_THROTTLE } from '../constants'
-import { parseKeys, throttleAction } from '../helpers'
+import { PRESS, SOUND_THROTTLE, keyCodeMap } from '../constants'
+import { throttleAction } from '../helpers'
 
 const throttledQueue = throttleAction(queue, SOUND_THROTTLE)
 
 export default function createKeyMiddleware(document) {
   return ({ dispatch, getState }) => {
-    document.addEventListener('keydown', event => handleKeyPress(event.key, dispatch, getState()))
-    document.addEventListener('keyup', event => handleKeyRelease(event.key, dispatch, getState()))
+    document.addEventListener('keydown', event => handleKeyPress(keyCodeMap[event.which], dispatch, getState()))
+    document.addEventListener('keyup', event => handleKeyRelease(keyCodeMap[event.which], dispatch))
 
     return next => action => {
       next(action) // eslint-disable-line callback-return
@@ -21,59 +21,35 @@ export default function createKeyMiddleware(document) {
 }
 
 function handleKeyPress(key, dispatch, state) {
-  if (onBoard(state) && !keyIsPressed(state, key)) {
+  if (state.board && state.keys.collectionKey !== key && state.keys.soundKey !== key) {
     dispatch(press(key))
   }
 }
 
-function handleKeyRelease(key, dispatch, state) {
-  if (onBoard(state)) {
-    dispatch(release(key))
+function handleKeyRelease(key, dispatch) {
+  dispatch(release(key))
+}
+
+function handleKeyCombinations({ keys, sounds }, dispatch) {
+  const { collectionKey, soundKey, secondaryMode } = keys
+
+  if (collectionKey !== null && soundKey !== null) {
+    matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, secondaryMode)
   }
 }
 
-function keyIsPressed(state, key) {
-  return state.keys.includes(key)
-}
-
-function onBoard({ routing }) {
-  return routing.locationBeforeTransitions.pathname !== '/'
-}
-
-function handleKeyCombinations({ keys, sounds, routing }, dispatch) {
-  if (!validateAmountOfKeys(keys)) {
-    return
-  }
-
-  const { collectionKey, soundKey, isSecondary } = parseKeys(keys)
-
-  if (validateSecondaryKeyCombination(keys, isSecondary)) {
-    return
-  }
-
-  matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, isSecondary)
-}
-
-function validateSecondaryKeyCombination(keys, isSecondary) {
-  return keys.length === 2 && isSecondary
-}
-
-function validateAmountOfKeys(keys) {
-  return keys.length === 2 || keys.length === 3
-}
-
-function matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, isSecondary) {
-  const matchingSound = findSound(sounds, collectionKey, soundKey, isSecondary)
+function matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, secondaryMode) {
+  const matchingSound = findSound(sounds, collectionKey, soundKey, secondaryMode)
 
   if (matchingSound) {
     dispatch(throttledQueue(matchingSound.name, matchingSound.collection))
   }
 }
 
-function findSound(sounds, collectionKey, soundKey, isSecondary) {
+function findSound(sounds, collectionKey, soundKey, secondaryMode) {
   return sounds.find(sound =>
     sound.collectionKey === collectionKey &&
     sound.key === soundKey &&
-    sound.isSecondary === isSecondary
+    sound.isSecondary === secondaryMode
   )
 }

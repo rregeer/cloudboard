@@ -1,0 +1,30 @@
+@import 'colors';
+@import 'variables';
+
+$remote-message-height: 2.4rem;
+
+.board__remote-message {
+  position: fixed;
+  top: $header-height;
+  height: $remote-message-height;
+  line-height: $remote-message-height;
+  width: 100%;
+  padding: 0 $default-spacing;
+  background-color: $blue;
+  color: $white;
+  font-size: 1.2rem;
+  z-index: 99;
+  text-align: center;
+}
+
+.board__remote-icon {
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+
+@media screen and (min-width: 480px) {
+  .board__remote-message {
+    top: $header-height-desktop;
+    padding: 0 $default-spacing-desktop;
+  }
+}

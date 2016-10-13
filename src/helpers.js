@@ -1,4 +1,4 @@
-import { letterIndex, SECONDARY_KEY } from './constants'
+import { letterIndex } from './constants'
 
 export function normalizeSounds(collections) {
   return collections.reduce((allSounds, { sounds, name: collection, key: collectionKey }) => {
@@ -15,7 +15,7 @@ export function addKeys(collections) {
   return collections.map((collection, index) => ({
     ...collection,
     sounds: addKeysToSounds(collection.sounds),
-    key: String(index + 1)
+    key: index + 1
   }))
 }
 
@@ -25,16 +25,6 @@ function addKeysToSounds(sounds) {
     key: letterIndex[index] || letterIndex[index - letterIndex.length],
     isSecondary: index >= letterIndex.length
   }))
-}
-
-export function parseKeys(keys) {
-  const [collectionKey, soundKeyOrSecondaryKey, secondarySoundKey] = keys
-
-  if (soundKeyOrSecondaryKey === SECONDARY_KEY) {
-    return { collectionKey, soundKey: secondarySoundKey, isSecondary: true }
-  }
-
-  return { collectionKey, soundKey: soundKeyOrSecondaryKey, isSecondary: false }
 }
 
 export function throttleAction(action, threshhold = 2000) {
@@ -52,4 +42,9 @@ export function throttleAction(action, threshhold = 2000) {
     last = now
     return action(...args)
   }
+}
+
+export function isMobileBrowser() {
+  const ua = navigator.userAgent.toLowerCase()
+  return !!ua.match(/ipad|iphone|ipod|android|iemobile/) && !window.MSStream
 }

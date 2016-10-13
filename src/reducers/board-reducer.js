@@ -1,12 +1,12 @@
 import { mapReducers } from 'redux-map-reducers'
-import { CHANGE_BOARD } from '../constants'
+import { LOCATION_CHANGE } from '../constants'
 
 const reducerMap = {
-  [CHANGE_BOARD]: changeBoard
+  [LOCATION_CHANGE]: determineBoard
 }
 
-function changeBoard(state, { board }) {
-  return board
+function determineBoard(state, { payload }) {
+  return payload.pathname.slice(1, payload.pathname.length) || null
 }
 
 export default mapReducers(reducerMap, null)
