@@ -22,24 +22,27 @@ function ownCreateStore(callback) {
   Modernizr.on('videoautoplay', hasAutoPlay => {
     const isMobileBrowser = checkIfMobileBrowser()
     const remoteMode = isMobileBrowser || !hasAutoPlay
-    const collections = addKeys(rawCollections)
-    const sounds = normalizeSounds(collections)
-
-    const reducer = combineReducers({
-      queue: soundReducer,
-      keys: keyReducer,
-      routing: routerReducer,
-      board: boardReducer,
-      remoteMode: () => remoteMode,
-      collections: () => collections,
-      sounds: () => sounds,
-      isMobileBrowser: () => isMobileBrowser
-    })
-
+    const reducer = createReducer(remoteMode, isMobileBrowser)
     const middlewares = createMiddlewares(remoteMode, isMobileBrowser)
     const store = createStore(reducer, applyMiddleware(...middlewares))
 
     return callback(store)
+  })
+}
+
+function createReducer(remoteMode, isMobileBrowser) {
+  const collections = addKeys(rawCollections)
+  const sounds = normalizeSounds(collections)
+
+  combineReducers({
+    queue: soundReducer,
+    keys: keyReducer,
+    routing: routerReducer,
+    board: boardReducer,
+    remoteMode: () => remoteMode,
+    collections: () => collections,
+    sounds: () => sounds,
+    isMobileBrowser: () => isMobileBrowser
   })
 }
 

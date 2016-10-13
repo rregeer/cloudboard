@@ -20,8 +20,8 @@ export default function createKeyMiddleware(document) {
   }
 }
 
-function handleKeyPress(key, dispatch, state) {
-  if (state.board && state.keys.collectionKey !== key && state.keys.soundKey !== key) {
+function handleKeyPress(key, dispatch, { board, keys }) {
+  if (board && keys.collectionKey !== key && keys.soundKey !== key) {
     dispatch(press(key))
   }
 }
