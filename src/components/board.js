@@ -53,11 +53,10 @@ function Board({
 }
 
 function mapStateToProps({ queue, sounds, collections, keys, remoteMode, isMobileBrowser }) {
-  const [playing] = queue
   const { collectionKey, soundKey, secondaryMode } = keys
 
   return {
-    playingSong: getPlayingSong(sounds, playing, collections),
+    playingSong: getPlayingSong(sounds, queue, collections),
     collections: markPressed(collections, collectionKey, soundKey, secondaryMode),
     secondaryMode,
     remoteMode,
