@@ -1,10 +1,10 @@
 @import 'variables';
 @import 'colors';
 
-$sound-key-size: 1.8rem;
+$sound-key-size: 1.7rem;
 
 .collection {
-  margin-bottom: 4rem;
+  margin-bottom: 3.2rem;
   padding: 0 $default-spacing;
 }
 
@@ -15,15 +15,39 @@ $sound-key-size: 1.8rem;
   font-size: 1.8rem;
   height: 3.3rem;
   font-weight: bold;
-  padding-bottom: 1rem;
+  padding-bottom: 0.6rem;
   margin: 0 0 2rem 0;
+
+  &::before {
+    position: relative;
+    top: 0.4rem;
+    float: right;
+    content: '\f054 ';
+    font-family: FontAwesome;
+    font-size: 0.7em;
+    color: inherit;
+    margin-right: 1rem;
+    transform: rotate(90deg);
+    transition: transform 150ms ease;
+  }
+
+  &:hover {
+    color: $blue;
+    cursor: pointer;
+  }
+}
+
+.collection__title--collapsed {
+  &::before {
+    transform: rotate(0deg);
+  }
 }
 
 .collection__key {
   display: inline-block;
   position: relative;
-  top: -1rem;
-  left: 0.4rem;
+  top: -0.8rem;
+  left: 0.3rem;
   border-radius: 0.4rem;
   text-align: center;
   width: $sound-key-size;

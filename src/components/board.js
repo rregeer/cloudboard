@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { queue as queueAction } from '../actions/sound-actions'
+import { toggleCollection as toggleCollectionAction } from '../actions/collection-actions'
 import Collection from './collection'
 import Player from './player'
 import { throttleAction } from '../helpers'
@@ -10,7 +11,15 @@ import { SOUND_THROTTLE } from '../constants'
 
 import '../styles/board.scss'
 
-function Board({ queue, collections, playingSong, secondaryMode, remoteMode, isMobileBrowser }) {
+function Board({
+  collections,
+  isMobileBrowser,
+  playingSong,
+  queue,
+  remoteMode,
+  secondaryMode,
+  toggleCollection
+}) {
   return (
     <div>
       {(() => {
@@ -34,6 +43,7 @@ function Board({ queue, collections, playingSong, secondaryMode, remoteMode, isM
             secondaryMode={secondaryMode}
             remoteMode={remoteMode}
             isMobileBrowser={isMobileBrowser}
+            toggleCollection={toggleCollection}
           />
         )}
       </div>
@@ -56,7 +66,8 @@ function mapStateToProps({ queue, sounds, collections, keys, remoteMode, isMobil
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    queue: throttleAction(queueAction, SOUND_THROTTLE)
+    queue: throttleAction(queueAction, SOUND_THROTTLE),
+    toggleCollection: toggleCollectionAction
   }, dispatch)
 }
 
@@ -105,7 +116,7 @@ Board.propTypes = {
   queue: PropTypes.func.isRequired,
   remoteMode: PropTypes.bool.isRequired,
   secondaryMode: PropTypes.bool.isRequired,
-  sounds: PropTypes.array
+  toggleCollection: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

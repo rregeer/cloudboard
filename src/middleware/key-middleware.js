@@ -8,7 +8,7 @@ const throttledQueue = throttleAction(queue, SOUND_THROTTLE)
 export default function createKeyMiddleware(document) {
   return ({ dispatch, getState }) => {
     document.addEventListener('keydown', event => handleKeyPress(keyCodeMap[event.which], dispatch, getState()))
-    document.addEventListener('keyup', event => handleKeyRelease(keyCodeMap[event.which], dispatch))
+    document.addEventListener('keyup', event => handleKeyRelease(keyCodeMap[event.which], dispatch, getState()))
 
     return next => action => {
       next(action) // eslint-disable-line callback-return
@@ -26,8 +26,12 @@ function handleKeyPress(key, dispatch, { board, keys }) {
   }
 }
 
-function handleKeyRelease(key, dispatch) {
-  dispatch(release(key))
+function handleKeyRelease(key, dispatch, { keys }) {
+  const { collectionKey, soundKey, secondaryMode } = keys
+
+  if (collectionKey !== null || soundKey !== null || !secondaryMode) {
+    dispatch(release(key))
+  }
 }
 
 function handleKeyCombinations({ keys, sounds }, dispatch) {

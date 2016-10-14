@@ -4,11 +4,24 @@ import Sound from './sound'
 import '../styles/collection.scss'
 
 export default function Collection({
-  title, name, collectionKey, pressed, sounds, secondaryMode, queue, index, isMobileBrowser
+  collectionKey,
+  collapsed,
+  index,
+  isMobileBrowser,
+  name,
+  pressed,
+  queue,
+  secondaryMode,
+  sounds,
+  title,
+  toggleCollection
 }) {
   return (
     <div className="collection">
-      <h2 className="collection__title">
+      <h2
+        className={'collection__title' + (collapsed ? ' collection__title--collapsed' : '')}
+        onClick={() => toggleCollection(name)}
+      >
         {title}
         {
           !isMobileBrowser &&
@@ -25,7 +38,7 @@ export default function Collection({
           </span>
         }
       </h2>
-      {sounds.map(sound =>
+      {!collapsed && sounds.map(sound =>
         <Sound
           {...sound}
           queue={queue}
@@ -42,6 +55,7 @@ export default function Collection({
 }
 
 Collection.propTypes = {
+  collapsed: PropTypes.bool.isRequired,
   collectionKey: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   isMobileBrowser: PropTypes.bool.isRequired,
@@ -53,5 +67,6 @@ Collection.propTypes = {
     title: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   })).isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  toggleCollection: PropTypes.func.isRequired
 }

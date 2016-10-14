@@ -3,7 +3,10 @@
     "ngerritsen",
     "plugin:react/recommended"
   ],
-  "plugins": [ "react" ],
+  "plugins": ["react"],
+  "globals": {
+    "Modernizr": true
+  },
   "env": {
     "browser": true,
     "node": true,
