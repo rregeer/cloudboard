@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
-import { hashHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import createLogger from 'redux-logger'
 
 import socket from './socket'
@@ -41,7 +41,7 @@ function createReducer(remoteMode, isMobileBrowser, sounds) {
 function createMiddlewares(remoteMode, isMobileBrowser) {
   const middlewares = [
     createQueueMiddleware(socket),
-    routerMiddleware(hashHistory)
+    routerMiddleware(browserHistory)
   ]
 
   if (!remoteMode) {

@@ -3,7 +3,7 @@ import './modernizr'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { syncHistoryWithStore } from 'react-router-redux'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 
 import createStore from './store'
@@ -15,7 +15,7 @@ import './styles/base.scss'
 import './styles/loader.scss'
 
 createStore(store => {
-  const history = syncHistoryWithStore(hashHistory, store)
+  const history = syncHistoryWithStore(browserHistory, store)
   const rootEl = document.getElementById('root')
 
   ReactDOM.render(
