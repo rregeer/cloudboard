@@ -35,4 +35,4 @@ Cloudboard.propTypes = {
   remoteMode: PropTypes.bool.isRequired
 }
 
-export default Connect(({ remoteMode }) => ({ remoteMode }))(Cloudboard)
+export default connect(({ remoteMode }) => ({ remoteMode }))(Cloudboard)
