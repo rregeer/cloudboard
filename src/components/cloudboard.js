@@ -9,7 +9,7 @@ import '../styles/cloudboard.scss'
 function Cloudboard({ children, location, remoteMode }) {
   const board = location.pathname.slice(1, location.pathname.length)
   return (
-    <div className={'cloudboard' + (remoteMode ? ' cloudboard--no-player' + '')}>
+    <div className={'cloudboard' + (remoteMode ? ' cloudboard--no-player' : '')}>
       <Header board={board}/>
       {children}
       <p className="cloudboard__version">
