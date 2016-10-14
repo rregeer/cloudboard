@@ -1,4 +1,4 @@
-import { COLLAPSED_COLLECTIONS_STORAGE_KEY, letterIndex } from './constants'
+import { COLLAPSED_COLLECTIONS_STORAGE_KEY, letterIndex } from '../constants'
 
 export function getSoundsAndCollectionsFromRawConfig(rawCollections) {
   const collections = addKeysAndState(rawCollections)
@@ -6,6 +6,38 @@ export function getSoundsAndCollectionsFromRawConfig(rawCollections) {
     collections,
     sounds: normalizeSounds(collections)
   }
+}
+
+export function getPlayingSong(sounds, playing, collections) {
+  if (!playing) {
+    return null
+  }
+
+  const { title: sound } = sounds.find(s => s.name === playing.sound) || {}
+  const { title: collection } = collections.find(c => c.name === playing.collection) || {}
+
+  return { sound, collection }
+}
+
+export function markPressed(collections, collectionKey, soundKey, secondaryMode) {
+  return collections.map(collection => {
+    const pressed = collection.key === collectionKey
+    return {
+      ...collection,
+      pressed,
+      sounds: markPressedSounds(collection.sounds, soundKey, secondaryMode, pressed)
+    }
+  })
+}
+
+function markPressedSounds(sounds, soundKey, secondaryMode, collectionPressed) {
+  return sounds.map(sound => ({
+    ...sound,
+    pressed:
+      collectionPressed &&
+      sound.key === soundKey &&
+      secondaryMode === sound.isSecondary
+  }))
 }
 
 function addKeysAndState(rawCollections) {
@@ -35,28 +67,6 @@ function addKeysToSounds(sounds) {
     key: letterIndex[index] || letterIndex[index - letterIndex.length],
     isSecondary: index >= letterIndex.length
   }))
-}
-
-export function throttleAction(action, threshhold = 2000) {
-  let last
-
-  return function run(...args) {
-    const now = Number(new Date())
-    if (last && now < last + threshhold) {
-      return {
-        ...action(...args),
-        type: 'IGNORE'
-      }
-    }
-
-    last = now
-    return action(...args)
-  }
-}
-
-export function isMobileBrowser() {
-  const ua = navigator.userAgent.toLowerCase()
-  return !!ua.match(/ipad|iphone|ipod|android|iemobile/) && !window.MSStream
 }
 
 function getCollapsedCollections() {

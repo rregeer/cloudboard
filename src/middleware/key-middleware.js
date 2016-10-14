@@ -1,7 +1,7 @@
 import { press, release } from '../actions/key-actions'
 import { queue } from '../actions/sound-actions'
 import { PRESS, SOUND_THROTTLE, keyCodeMap } from '../constants'
-import { throttleAction } from '../helpers'
+import { throttleAction } from '../helpers/actions'
 
 const throttledQueue = throttleAction(queue, SOUND_THROTTLE)
 

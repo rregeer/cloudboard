@@ -6,7 +6,8 @@ import { queue as queueAction } from '../actions/sound-actions'
 import { toggleCollection as toggleCollectionAction } from '../actions/collection-actions'
 import Collection from './collection'
 import Player from './player'
-import { throttleAction } from '../helpers'
+import { throttleAction } from '../helpers/actions'
+import { getPlayingSong, markPressed } from '../helpers/collections'
 import { SOUND_THROTTLE } from '../constants'
 
 import '../styles/board.scss'
@@ -69,38 +70,6 @@ function mapDispatchToProps(dispatch) {
     queue: throttleAction(queueAction, SOUND_THROTTLE),
     toggleCollection: toggleCollectionAction
   }, dispatch)
-}
-
-function getPlayingSong(sounds, playing, collections) {
-  if (!playing) {
-    return null
-  }
-
-  const { title: sound } = sounds.find(s => s.name === playing.sound) || {}
-  const { title: collection } = collections.find(c => c.name === playing.collection) || {}
-
-  return { sound, collection }
-}
-
-function markPressed(collections, collectionKey, soundKey, secondaryMode) {
-  return collections.map(collection => {
-    const pressed = collection.key === collectionKey
-    return {
-      ...collection,
-      pressed,
-      sounds: markPressedSounds(collection.sounds, soundKey, secondaryMode, pressed)
-    }
-  })
-}
-
-function markPressedSounds(sounds, soundKey, secondaryMode, collectionPressed) {
-  return sounds.map(sound => ({
-    ...sound,
-    pressed:
-      collectionPressed &&
-      sound.key === soundKey &&
-      secondaryMode === sound.isSecondary
-  }))
 }
 
 Board.propTypes = {

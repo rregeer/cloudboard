@@ -5,8 +5,8 @@ import createLogger from 'redux-logger'
 
 import socket from './socket'
 import rawCollections from '../etc/sound-collections.json'
-import { getSoundsAndCollectionsFromRawConfig, isMobileBrowser as checkIfMobileBrowser } from './helpers'
-
+import { isMobileBrowser as checkIfMobileBrowser } from './helpers/browser'
+import { getSoundsAndCollectionsFromRawConfig } from './helpers/collections'
 import * as reducers from './reducers'
 
 import collectionMiddleware from './middleware/collection-middleware'
