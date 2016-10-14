@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 import Header from './header'
 import { version } from '../../package.json'
 
 import '../styles/cloudboard.scss'
 
-export default function Cloudboard({ children, location }) {
+function Cloudboard({ children, location, remoteMode }) {
   const board = location.pathname.slice(1, location.pathname.length)
   return (
     <div className="cloudboard">
@@ -15,7 +16,10 @@ export default function Cloudboard({ children, location }) {
         <i className="fa fa-copyright"/>
           {'\u00A0'}
         <a
-          className="cloudboard__version-link"
+          className={
+            'cloudboard__version-link' +
+            (remoteMode ? 'cloudboard__version-link--no-player' : '')
+          }
           href="http://nielsgerritsen.com"
           target="_blank"
         >
@@ -30,5 +34,8 @@ export default function Cloudboard({ children, location }) {
 Cloudboard.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  remoteMode: PropTypes.bool.isRequired
 }
+
+export default Connect(({ remoteMode }) => ({ remoteMode }))(Cloudboard)
