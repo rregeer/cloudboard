@@ -19,7 +19,7 @@ export default function Collection({
   return (
     <div className="collection">
       <h2
-        className={'collection__title' + (collapsed ? ' collection__title--collapsed' : '')}
+        className={'collection__title' + (collapsed && !pressed ? ' collection__title--collapsed' : '')}
         onClick={() => toggleCollection(name)}
       >
         {title}
@@ -38,7 +38,7 @@ export default function Collection({
           </span>
         }
       </h2>
-      {!collapsed && sounds.map(sound =>
+      {(!collapsed || pressed) && sounds.map(sound =>
         <Sound
           {...sound}
           queue={queue}
