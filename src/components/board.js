@@ -7,7 +7,7 @@ import { toggleCollection as toggleCollectionAction } from '../actions/collectio
 import Collection from './collection'
 import Player from './player'
 import { throttleAction } from '../helpers/actions'
-import { getPlayingSong, markPressed } from '../helpers/collections'
+import { getPlayingSound, markPressed } from '../helpers/collections'
 import { SOUND_THROTTLE } from '../constants'
 
 import '../styles/board.scss'
@@ -15,7 +15,7 @@ import '../styles/board.scss'
 function Board({
   collections,
   isMobileBrowser,
-  playingSong,
+  playingSound,
   queue,
   remoteMode,
   secondaryMode,
@@ -31,7 +31,7 @@ function Board({
       }
       {
         !remoteMode &&
-        <Player playing={playingSong} remoteMode={remoteMode}/>
+        <Player playing={playingSound} remoteMode={remoteMode}/>
       }
       <div className="board__collections">
         {collections.map((collection, index) =>
@@ -56,7 +56,7 @@ function mapStateToProps({ queue, sounds, collections, keys, remoteMode, isMobil
   const { collectionKey, soundKey, secondaryMode } = keys
 
   return {
-    playingSong: getPlayingSong(sounds, queue, collections),
+    playingSound: getPlayingSound(sounds, queue, collections),
     collections: markPressed(collections, collectionKey, soundKey, secondaryMode),
     secondaryMode,
     remoteMode,
@@ -77,7 +77,7 @@ Board.propTypes = {
     sounds: PropTypes.array.isRequired
   })).isRequired,
   isMobileBrowser: PropTypes.bool.isRequired,
-  playingSong: PropTypes.shape({
+  playingSound: PropTypes.shape({
     sound: PropTypes.string,
     collection: PropTypes.string
   }),
