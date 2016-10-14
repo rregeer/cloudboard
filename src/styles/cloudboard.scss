@@ -3,7 +3,11 @@
 
 .cloudboard {
   padding-top: $header-height + $default-spacing * 2;
-  padding-bottom: $default-spacing * 5
+  padding-bottom: $player-heigth + $default-spacing * 2;
+}
+
+.cloudboard--no-player {
+  padding-bottom: $default-spacing * 2;
 }
 
 .cloudboard__version {
@@ -28,6 +32,10 @@
 @media screen and (min-width: 480px) {
   .cloudboard {
     padding-top: $header-height-desktop + $default-spacing-desktop * 2;
-    padding-bottom: $default-spacing-desktop * 3
+    padding-bottom: $player-height-desktop + $default-spacing-desktop * 2;
+  }
+
+  .cloudboard--no-player {
+    padding-bottom: $default-spacing-desktop * 2;
   }
 }
