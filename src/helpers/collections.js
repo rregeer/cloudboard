@@ -8,7 +8,9 @@ export function getSoundsAndCollectionsFromRawConfig(rawCollections) {
   }
 }
 
-export function getPlayingSong(sounds, playing, collections) {
+export function getPlayingSound(sounds, queue, collections) {
+  const playing = queue[queue.length - 1]
+
   if (!playing) {
     return null
   }
