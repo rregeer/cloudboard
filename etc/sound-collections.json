@@ -898,5 +898,119 @@
         "title": "Vol met vitaminen"
       }
     ]
+  },
+  {
+    "name": "quake",
+    "title": "Quake",
+    "sounds": [
+      {
+        "name": "dominating",
+        "title": "Dominating"
+      },
+      {
+        "name": "firstblood",
+        "title": "Firstblood"
+      },
+      {
+        "name": "godlike",
+        "title": "Godlike"
+      },
+      {
+        "name": "killingspree",
+        "title": "Killingspree"
+      },
+      {
+        "name": "ludicrouskill",
+        "title": "Ludicrouskill"
+      },
+      {
+        "name": "monsterkill",
+        "title": "Monsterkill"
+      },
+      {
+        "name": "multikill",
+        "title": "Multikill"
+      },
+      {
+        "name": "play",
+        "title": "Play"
+      },
+      {
+        "name": "rampage",
+        "title": "Rampage"
+      },
+      {
+        "name": "ultrakill",
+        "title": "Ultrakill"
+      },
+      {
+        "name": "unstoppable",
+        "title": "Unstoppable"
+      },
+      {
+        "name": "wickedsick",
+        "title": "Wickedsick"
+      },
+      {
+        "name": "bottomfeeder-female",
+        "title": "Bottomfeeder female"
+      },
+      {
+        "name": "dominating-female",
+        "title": "Dominating female"
+      },
+      {
+        "name": "firstblood-female",
+        "title": "Firstblood female"
+      },
+      {
+        "name": "godlike-female",
+        "title": "Godlike female"
+      },
+      {
+        "name": "headshot-female",
+        "title": "Headshot female"
+      },
+      {
+        "name": "holyshit-female",
+        "title": "Holy shit female"
+      },
+      {
+        "name": "humiliation-female",
+        "title": "Humiliation female"
+      },
+      {
+        "name": "killingspree-female",
+        "title": "Killingspree female"
+      },
+      {
+        "name": "monsterkill-female",
+        "title": "Monsterkill female"
+      },
+      {
+        "name": "multikill-female",
+        "title": "Multikill female"
+      },
+      {
+        "name": "play-female",
+        "title": "Play female"
+      },
+      {
+        "name": "rampage-female",
+        "title": "Rampage female"
+      },
+      {
+        "name": "ultrakill-female",
+        "title": "Ultrakill female"
+      },
+      {
+        "name": "unstoppable-female",
+        "title": "Unstoppable female"
+      },
+      {
+        "name": "wickedsick-female",
+        "title": "Wickedsick female"
+      }
+    ]
   }
 ]
