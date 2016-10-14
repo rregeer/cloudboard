@@ -9,17 +9,14 @@ import '../styles/cloudboard.scss'
 function Cloudboard({ children, location, remoteMode }) {
   const board = location.pathname.slice(1, location.pathname.length)
   return (
-    <div className="cloudboard">
+    <div className={'cloudboard' + (remoteMode ? ' cloudboard--no-player' + '')}>
       <Header board={board}/>
       {children}
       <p className="cloudboard__version">
         <i className="fa fa-copyright"/>
           {'\u00A0'}
         <a
-          className={
-            'cloudboard__version-link' +
-            (remoteMode ? 'cloudboard__version-link--no-player' : '')
-          }
+          className="cloudboard__version-link"
           href="http://nielsgerritsen.com"
           target="_blank"
         >
