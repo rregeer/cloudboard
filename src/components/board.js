@@ -24,9 +24,9 @@ function Board({
     <div className={remoteMode ? 'board--remote-mode' : ''}>
       {
         remoteMode &&
-        <div className="board__remote-message">
+        <p className="board__remote-message">
           <i className="fa fa-cloud board__remote-icon"/> Remote mode
-        </div>
+        </p>
       }
       {
         !remoteMode &&
