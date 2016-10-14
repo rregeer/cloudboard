@@ -21,17 +21,17 @@ function Board({
   toggleCollection
 }) {
   return (
-    <div>
-      {(() => {
-        if (remoteMode) {
-          return <div className="board__remote-message">
-            <i className="fa fa-cloud board__remote-icon"/> Remote mode
-          </div>
-        }
-
-        return <Player playing={playingSong} remoteMode={remoteMode}/>
-      })()}
-
+    <div className={remoteMode ? 'board--remote-mode' : ''}>
+      {
+        remoteMode &&
+        <div className="board__remote-message">
+          <i className="fa fa-cloud board__remote-icon"/> Remote mode
+        </div>
+      }
+      {
+        !remoteMode &&
+        <Player playing={playingSong} remoteMode={remoteMode}/>
+      }
       <div className="board__collections">
         {collections.map((collection, index) =>
           <Collection
