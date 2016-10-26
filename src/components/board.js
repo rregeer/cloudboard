@@ -9,6 +9,7 @@ import Player from './player'
 import { throttleAction } from '../helpers/actions'
 import { getPlayingSound, markPressed } from '../helpers/collections'
 import { SOUND_THROTTLE } from '../constants'
+import BoardTopMessage from './board-top-message'
 
 import '../styles/board.scss'
 
@@ -28,17 +29,8 @@ function Board({
 
   return (
     <div className={remoteMode ? 'board--has-top-message' : ''}>
-      {
-        hasTopMessage &&
-        <p className={'board__top-message ' + (localMode ? 'board__top-message--local' : 'board__top-message--remote')}>
-          { !localMode && <i className="fa fa-cloud board__remote-icon"/> }
-          { localMode ? 'Local mode' : 'Remote mode' }
-        </p>
-      }
-      {
-        hasPlayer &&
-        <Player playing={playingSound} remoteMode={remoteMode}/>
-      }
+      {hasTopMessage && <BoardTopMessage localMode={localMode}/>}
+      {hasPlayer && <Player playing={playingSound} remoteMode={remoteMode}/>}
       <div className="board__collections">
         {collections.map((collection, index) =>
           <Collection

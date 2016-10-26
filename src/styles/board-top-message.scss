@@ -1,0 +1,38 @@
+@import 'colors';
+@import 'variables';
+
+$top-message-height: 2.4rem;
+
+.board-top-message {
+  position: fixed;
+  top: $header-height - 0.1rem;
+  height: $top-message-height;
+  line-height: $top-message-height;
+  width: 100%;
+  padding: 0 $default-spacing;
+  margin: 0;
+  color: $white;
+  font-size: 1.2rem;
+  z-index: 101;
+  text-align: center;
+}
+
+.board-top-message--remote {
+  background-color: $blue;
+}
+
+.board-top-message--local {
+  background-color: $local;
+}
+
+.board-top-message__icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 480px) {
+  .board-top-message {
+    top: $header-height-desktop - 0.1rem;
+    padding: 0 $default-spacing-desktop;
+  }
+}

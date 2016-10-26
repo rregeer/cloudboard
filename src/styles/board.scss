@@ -6,37 +6,3 @@ $remote-message-height: 2.4rem;
 .board--has-top-message {
   padding-top: 2.4rem;
 }
-
-.board__top-message {
-  position: fixed;
-  top: $header-height - 0.1rem;
-  height: $remote-message-height;
-  line-height: $remote-message-height;
-  width: 100%;
-  padding: 0 $default-spacing;
-  margin: 0;
-  color: $white;
-  font-size: 1.2rem;
-  z-index: 101;
-  text-align: center;
-}
-
-.board__top-message--remote {
-  background-color: $blue;
-}
-
-.board__top-message--local {
-  background-color: $local;
-}
-
-.board__remote-icon {
-  display: inline-block;
-  margin-right: 0.4rem;
-}
-
-@media screen and (min-width: 480px) {
-  .board__remote-message {
-    top: $header-height-desktop - 0.1rem;
-    padding: 0 $default-spacing-desktop;
-  }
-}
