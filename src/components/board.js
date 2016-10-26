@@ -15,22 +15,28 @@ import '../styles/board.scss'
 function Board({
   collections,
   isMobileBrowser,
+  location,
   playingSound,
   queue,
   remoteMode,
   secondaryMode,
   toggleCollection
 }) {
+  const localMode = location.pathname.indexOf('/local') === 0
+  const hasTopMessage = remoteMode || localMode
+  const hasPlayer = !(remoteMode && !localMode)
+
   return (
-    <div className={remoteMode ? 'board--remote-mode' : ''}>
+    <div className={remoteMode ? 'board--has-top-message' : ''}>
       {
-        remoteMode &&
-        <p className="board__remote-message">
-          <i className="fa fa-cloud board__remote-icon"/> Remote mode
+        hasTopMessage &&
+        <p className={'board__top-message ' + (localMode ? 'board__top-message--local' : 'board__top-message--remote')}>
+          { !localMode && <i className="fa fa-cloud board__remote-icon"/> }
+          { localMode ? 'Local mode' : 'Remote mode' }
         </p>
       }
       {
-        !remoteMode &&
+        hasPlayer &&
         <Player playing={playingSound} remoteMode={remoteMode}/>
       }
       <div className="board__collections">
@@ -77,6 +83,9 @@ Board.propTypes = {
     sounds: PropTypes.array.isRequired
   })).isRequired,
   isMobileBrowser: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
   playingSound: PropTypes.shape({
     sound: PropTypes.string,
     collection: PropTypes.string

@@ -30,7 +30,11 @@ class BoardPicker extends Component {
       return
     }
 
-    this.props.push('/' + input)
+    this.props.push('/board/' + input)
+  }
+
+  handleLocalMode() {
+    this.props.push('/local')
   }
 
   isValidBoardName(input) {
@@ -42,6 +46,7 @@ class BoardPicker extends Component {
 
   render() {
     const { input, error } = this.state
+
     const valid = this.isValidBoardName(input)
     return (
       <div className="board-picker">
@@ -64,6 +69,18 @@ class BoardPicker extends Component {
         <p className="board-picker__message">
           Type a board name, then make sure your friends join the same board.
         </p>
+
+        <p className="board-picker__message">
+          Or use the board without friends:
+        </p>
+
+        <button
+          type="button"
+          className="board-picker__button board-picker__button--local"
+          onClick={this.handleLocalMode.bind(this)}
+        >
+          Local mode
+        </button>
       </div>
     )
   }

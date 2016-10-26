@@ -29,7 +29,7 @@ function handlePlay(dispatch, state, event) {
 }
 
 function playSound(sound, id, collection, dispatch) {
-  const url = `./sounds/${collection}/${sound}.mp3`
+  const url = `/sounds/${collection}/${sound}.mp3`
 
   playAudio(url, () => {
     dispatch(stopped(id))

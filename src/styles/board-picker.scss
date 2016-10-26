@@ -75,6 +75,10 @@ $input-height: 4.5rem;
   }
 }
 
+.board-picker__button--local {
+  background: $local linear-gradient(to right, $local, 5%, adjust-hue($local, 8));
+}
+
 @media screen and (min-width: 720px) {
   .board-picker {
     margin: 14vh auto 21vh;

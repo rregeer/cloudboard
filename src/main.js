@@ -23,7 +23,8 @@ createStore(store => {
       <Router history={history}>
         <Route path="/" component={Cloudboard}>
           <IndexRoute component={BoardPicker}/>
-          <Route path=":board" component={Board}/>
+          <Route path="/local" component={Board}/>
+          <Route path="/board/:board" component={Board}/>
         </Route>
       </Router>
     </Provider>,
