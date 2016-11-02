@@ -382,30 +382,6 @@
     ]
   },
   {
-    "name": "harm-alarm",
-    "title": "Harm Alarm",
-    "sounds": [
-      {
-        "name": "hallo",
-        "title": "Hallo"
-      },
-      {
-        "name": "ja-ik-blijf-het-toch-zeggen",
-        "title": "Ja, ik blijf het toch zeggen"
-      }
-    ]
-  },
-  {
-    "name": "rijkswaterstaat",
-    "title": "Rijkswaterstaat",
-    "sounds": [
-      {
-        "name": "vergeet-je-niet-iets",
-        "title": "Vergeet je niet iets?"
-      }
-    ]
-  },
-  {
     "name": "kermis",
     "title": "Kermis",
     "sounds": [
@@ -732,10 +708,6 @@
         "title": "Duitste leraar onvoldoende"
       },
       {
-        "name": "gewist",
-        "title": "Gewist"
-      },
-      {
         "name": "haha-bier",
         "title": "Haha bier"
       },
@@ -856,8 +828,16 @@
         "title": "Wij zijn helemaal knettah"
       },
       {
-        "name": "willy-en-max",
-        "title": "Willy en Max"
+        "name": "hallo",
+        "title": "Hallo"
+      },
+      {
+        "name": "ja-ik-blijf-het-toch-zeggen",
+        "title": "Ja, ik blijf het toch zeggen"
+      },
+      {
+        "name": "vergeet-je-niet-iets",
+        "title": "Vergeet je niet iets?"
       }
     ]
   },
