@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { queue as queueAction } from '../actions/sound-actions'
 import { toggleCollection as toggleCollectionAction } from '../actions/collection-actions'
+import { addFavorite as addFavoriteAction } from '../actions/favorites-actions'
 import Collection from './collection'
 import Player from './player'
 import { throttleAction } from '../helpers/actions'
@@ -14,6 +15,7 @@ import BoardTopMessage from './board-top-message'
 import '../styles/board.scss'
 
 function Board({
+  addFavorite,
   collections,
   isMobileBrowser,
   location,
@@ -35,6 +37,7 @@ function Board({
         {collections.map((collection, index) =>
           <Collection
             {...collection}
+            addFavorite={addFavorite}
             key={collection.name}
             collectionKey={collection.key}
             queue={queue}
@@ -65,11 +68,13 @@ function mapStateToProps({ queue, sounds, collections, keys, remoteMode, isMobil
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     queue: throttleAction(queueAction, SOUND_THROTTLE),
-    toggleCollection: toggleCollectionAction
+    toggleCollection: toggleCollectionAction,
+    addFavorite: addFavoriteAction
   }, dispatch)
 }
 
 Board.propTypes = {
+  addFavorite: PropTypes.func.isRequired,
   collections: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     sounds: PropTypes.array.isRequired

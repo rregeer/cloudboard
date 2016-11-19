@@ -3,7 +3,17 @@ import React, { PropTypes } from 'react'
 import '../styles/sound.scss'
 
 export default function Sound({
-  title, name, queue, soundKey, pressed, isSecondary, secondaryMode, collection, collectionIndex, collectionPressed
+  addFavorite,
+  title,
+  name,
+  queue,
+  soundKey,
+  pressed,
+  isSecondary,
+  secondaryMode,
+  collection,
+  collectionIndex,
+  collectionPressed
 }) {
   return (
     <button
@@ -11,6 +21,13 @@ export default function Sound({
       onClick={() => queue(name, collection)}
     >
       {title}
+      <i
+        className="sound__favorite-star fa fa-star"
+        onClick={event => {
+          event.stopPropagation()
+          addFavorite(collection, name)
+        }}
+      />
       <span
         className={
           'sound__key' +
@@ -26,6 +43,7 @@ export default function Sound({
 }
 
 Sound.propTypes = {
+  addFavorite: PropTypes.func.isRequired,
   collection: PropTypes.string.isRequired,
   collectionIndex: PropTypes.number.isRequired,
   collectionPressed: PropTypes.bool.isRequired,

@@ -4,6 +4,7 @@ import Sound from './sound'
 import '../styles/collection.scss'
 
 export default function Collection({
+  addFavorite,
   collectionKey,
   collapsed,
   index,
@@ -41,6 +42,7 @@ export default function Collection({
       {(!collapsed || pressed) && sounds.map(sound =>
         <Sound
           {...sound}
+          addFavorite={addFavorite}
           queue={queue}
           key={sound.name}
           soundKey={sound.key}
@@ -55,6 +57,7 @@ export default function Collection({
 }
 
 Collection.propTypes = {
+  addFavorite: PropTypes.func.isRequired,
   collapsed: PropTypes.bool.isRequired,
   collectionKey: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
