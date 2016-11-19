@@ -8,6 +8,8 @@ export const STOPPED = 'STOPPED'
 export const TOGGLE_COLLECTION = 'TOGGLE_COLLECTION'
 export const TOGGLE_LOCAL_MODE = 'TOGGLE_LOCAL_MODE'
 export const LOCATION_CHANGE = '@@router/LOCATION_CHANGE'
+export const ADD_FAVORITE = 'ADD_FAVORITE'
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE'
 
 export const COLLAPSED_COLLECTIONS_STORAGE_KEY = 'collapsedCollections'
 export const LOCAL_MODE_STORAGE_KEY = 'localMode'
