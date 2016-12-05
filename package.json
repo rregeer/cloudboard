@@ -4,7 +4,7 @@
   "description": "A shared soundboard. �",
   "main": "server/index.js",
   "engines": {
-    "node": ">6.5"
+    "node": ">6.9.1"
   },
   "scripts": {
     "start": "node server",
