@@ -1,8 +1,14 @@
 {
   "presets": [
-    "es2015",
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": "last 2 versions"
+        }
+      }
+    ],
     "react",
-    "stage-1"
   ],
-  "plugins": ["transform-decorators-legacy"]
+  "plugins": ["transform-object-rest-spread"]
 }
