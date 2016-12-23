@@ -48,7 +48,7 @@ const config = {
       filename: 'index.html',
       template: './src/index.html',
       inject: true,
-      favicon: './public/favicon.png',
+      favicon: './favicon.png',
       hash: true
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
