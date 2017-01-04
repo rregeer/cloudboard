@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const { version } = require('./package.json')
 
 const env = process.env.NODE_ENV
 const config = {
@@ -48,8 +49,10 @@ const config = {
       filename: 'index.html',
       template: './src/index.html',
       inject: true,
+      analytics: 'UA-89786772-1',
       favicon: './favicon.png',
-      hash: true
+      hash: true,
+      version
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new ExtractTextPlugin('style.css'),
