@@ -26,14 +26,28 @@ $sound-key-size: 1.8rem;
   }
 }
 
+.sound--favorite {
+  border: 1px solid $orange;
+  color: $orange;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $orange;
+  }
+}
+
 .sound__favorite-star {
-  display: none !important;
   margin: -0.5rem -0.9rem -0.5rem 0.4rem;
   padding: 0.5rem;
 
   &:hover {
     color: $orange;
   }
+}
+
+.sound__favorite-star--remove:hover {
+  color: saturate($red, 10%);
 }
 
 .sound__key {

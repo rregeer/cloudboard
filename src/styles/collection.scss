@@ -37,10 +37,32 @@ $sound-key-size: 1.7rem;
   }
 }
 
+.collection__title--favorites {
+  color: $orange;
+  border-bottom: 1px solid lighten($orange, 40%);
+
+  &::before {
+    content: '\f005 ';
+    transform: rotate(0deg);
+    font-size: 0.9em;
+  }
+
+  &:hover {
+    color: $orange;
+    cursor: default;
+  }
+}
+
 .collection__title--collapsed {
   &::before {
     transform: rotate(0deg);
   }
+}
+
+.collection__favorites-message {
+  padding: 1.5rem 0 0.7rem;
+  text-align: center;
+  color: lighten($orange, 20%);
 }
 
 .collection__key {

@@ -13,6 +13,7 @@ export const REMOVE_FAVORITE = 'REMOVE_FAVORITE'
 export const CHANGE_BOARD = 'CHANGE_BOARD'
 
 export const COLLAPSED_COLLECTIONS_STORAGE_KEY = 'collapsedCollections'
+export const FAVORITES_STORAGE_KEY = 'favorites'
 export const LOCAL_MODE_STORAGE_KEY = 'localMode'
 
 export const SOUND_THROTTLE = 500

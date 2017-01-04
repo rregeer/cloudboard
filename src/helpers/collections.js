@@ -1,4 +1,4 @@
-import { COLLAPSED_COLLECTIONS_STORAGE_KEY, letterIndex } from '../constants'
+import { COLLAPSED_COLLECTIONS_STORAGE_KEY, FAVORITES_STORAGE_KEY, letterIndex } from '../constants'
 
 export function getSoundsAndCollectionsFromRawConfig(rawCollections) {
   const collections = addKeysAndState(rawCollections)
@@ -21,20 +21,37 @@ export function getPlayingSound(sounds, queue, collections) {
   return { sound, collection }
 }
 
-export function markPressed(collections, collectionKey, soundKey, secondaryMode) {
+export function markStates(collections, collectionKey, soundKey, secondaryMode, favorites) {
   return collections.map(collection => {
     const pressed = collection.key === collectionKey
     return {
       ...collection,
       pressed,
-      sounds: markPressedSounds(collection.sounds, soundKey, secondaryMode, pressed)
+      sounds: markSoundStates(collection.sounds, soundKey, secondaryMode, pressed, favorites, collection)
     }
   })
 }
 
-function markPressedSounds(sounds, soundKey, secondaryMode, collectionPressed) {
+export function enhanceFavorites(favorites, sounds) {
+  return favorites.map(favorite => {
+    return sounds.find(s => s.name === favorite.sound && s.collection === favorite.collection)
+  })
+}
+
+export function getFavorites() {
+  if (Modernizr.localstorage) {
+    const favorites = localStorage.getItem(FAVORITES_STORAGE_KEY)
+    return favorites ? JSON.parse(favorites) : []
+  }
+
+  return []
+}
+
+// eslint-disable-next-line max-params
+function markSoundStates(sounds, soundKey, secondaryMode, collectionPressed, favorites, collection) {
   return sounds.map(sound => ({
     ...sound,
+    isFavorite: !!favorites.find(f => f.sound === sound.name && f.collection === collection.name),
     pressed:
       collectionPressed &&
       sound.key === soundKey &&
