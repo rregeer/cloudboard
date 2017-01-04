@@ -1,7 +1,7 @@
 @import 'colors';
 @import 'variables';
 
-$sound-key-size: 1.8rem;
+$sound-key-size: 1.7rem;
 
 .sound {
   position: relative;
@@ -37,24 +37,28 @@ $sound-key-size: 1.8rem;
   }
 }
 
-.sound__favorite-star {
-  margin: -0.5rem -0.9rem -0.5rem 0.4rem;
-  padding: 0.5rem;
-
-  &:hover {
-    color: $orange;
-  }
+.sound--has-action {
+  padding-right: 1.8rem;
 }
 
-.sound__favorite-star--remove:hover {
+.sound__action {
+  margin: -0.5rem -0.9rem -0.5rem 0.4rem;
+  padding: 0.5rem;
+}
+
+.sound__action--favorite:hover {
+  color: $orange;
+}
+
+.sound__action--remove:hover {
   color: saturate($red, 10%);
 }
 
 .sound__key {
   position: absolute;
   pointer-events: none;
-  opacity: 0;
-  top: -0.7rem;
+  opacity: 1;
+  top: -0.6rem;
   right: -0.6rem;
   border-radius: 0.4rem;
   width: $sound-key-size;
@@ -63,30 +67,10 @@ $sound-key-size: 1.8rem;
   padding: 0;
   text-align: center;
   transition: background, $key-press-animation-speed, opacity $key-press-animation-speed;
-  background-color: $primary;
+  background-color: $orange;
   color: $white;
   font-size: 1.2rem;
   font-weight: normal;
-
-  .sound--pressed & {
-    background-color: darken($primary, 12%);
-  }
-}
-
-.sound__key--active {
-  opacity: 0.6;
-}
-
-.sound__key--is-option.sound__key--active {
-  opacity: 1
-}
-
-.sound__key--secondary {
-  background-color: lighten($orange, 12%);
-
-  .sound--pressed & {
-    background-color: $orange;
-  }
 }
 
 @media screen and (min-width: 480px) {

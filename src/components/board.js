@@ -9,7 +9,8 @@ import Collection from './collection'
 import Player from './player'
 import Favorites from './favorites'
 import { throttleAction } from '../helpers/actions'
-import { getPlayingSound, markStates, enhanceFavorites } from '../helpers/collections'
+import { getPlayingSound, markFavoriteSounds } from '../helpers/collections'
+import { enhanceFavorites } from '../helpers/favorites'
 import { SOUND_THROTTLE } from '../constants'
 import BoardTopMessage from './board-top-message'
 
@@ -25,7 +26,6 @@ function Board({
   queue,
   remoteMode,
   removeFavorite,
-  secondaryMode,
   toggleCollection
 }) {
   const localMode = location.pathname.indexOf('/local') === 0
@@ -43,10 +43,8 @@ function Board({
             {...collection}
             addFavorite={addFavorite}
             key={collection.name}
-            collectionKey={collection.key}
             queue={queue}
             index={index}
-            secondaryMode={secondaryMode}
             remoteMode={remoteMode}
             isMobileBrowser={isMobileBrowser}
             toggleCollection={toggleCollection}
@@ -57,13 +55,10 @@ function Board({
   )
 }
 
-function mapStateToProps({ queue, sounds, collections, keys, favorites, remoteMode, isMobileBrowser }) {
-  const { collectionKey, soundKey, secondaryMode } = keys
-
+function mapStateToProps({ queue, sounds, collections, favorites, remoteMode, isMobileBrowser }) {
   return {
     playingSound: getPlayingSound(sounds, queue, collections),
-    collections: markStates(collections, collectionKey, soundKey, secondaryMode, favorites),
-    secondaryMode,
+    collections: markFavoriteSounds(collections, favorites),
     remoteMode,
     favorites: enhanceFavorites(favorites, sounds),
     isMobileBrowser
@@ -97,7 +92,6 @@ Board.propTypes = {
   queue: PropTypes.func.isRequired,
   remoteMode: PropTypes.bool.isRequired,
   removeFavorite: PropTypes.func.isRequired,
-  secondaryMode: PropTypes.bool.isRequired,
   toggleCollection: PropTypes.func.isRequired
 }
 

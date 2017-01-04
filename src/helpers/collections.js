@@ -1,7 +1,7 @@
-import { COLLAPSED_COLLECTIONS_STORAGE_KEY, FAVORITES_STORAGE_KEY, letterIndex } from '../constants'
+import { COLLAPSED_COLLECTIONS_STORAGE_KEY } from '../constants'
 
 export function getSoundsAndCollectionsFromRawConfig(rawCollections) {
-  const collections = addKeysAndState(rawCollections)
+  const collections = markCollapsed(rawCollections)
   return {
     collections,
     sounds: normalizeSounds(collections)
@@ -21,50 +21,26 @@ export function getPlayingSound(sounds, queue, collections) {
   return { sound, collection }
 }
 
-export function markStates(collections, collectionKey, soundKey, secondaryMode, favorites) {
+export function markFavoriteSounds(collections, favorites) {
   return collections.map(collection => {
-    const pressed = collection.key === collectionKey
     return {
       ...collection,
-      pressed,
-      sounds: markSoundStates(collection.sounds, soundKey, secondaryMode, pressed, favorites, collection)
+      sounds: markFavorites(collection.sounds, favorites, collection)
     }
   })
 }
 
-export function enhanceFavorites(favorites, sounds) {
-  return favorites.map(favorite => {
-    return sounds.find(s => s.name === favorite.sound && s.collection === favorite.collection)
-  })
-}
-
-export function getFavorites() {
-  if (Modernizr.localstorage) {
-    const favorites = localStorage.getItem(FAVORITES_STORAGE_KEY)
-    return favorites ? JSON.parse(favorites) : []
-  }
-
-  return []
-}
-
-// eslint-disable-next-line max-params
-function markSoundStates(sounds, soundKey, secondaryMode, collectionPressed, favorites, collection) {
+function markFavorites(sounds, favorites, collection) {
   return sounds.map(sound => ({
     ...sound,
-    isFavorite: !!favorites.find(f => f.sound === sound.name && f.collection === collection.name),
-    pressed:
-      collectionPressed &&
-      sound.key === soundKey &&
-      secondaryMode === sound.isSecondary
+    isFavorite: !!favorites.find(f => f.sound === sound.name && f.collection === collection.name)
   }))
 }
 
-function addKeysAndState(rawCollections) {
+function markCollapsed(rawCollections) {
   const collapsedCollections = getCollapsedCollections()
-  return rawCollections.map((collection, index) => ({
+  return rawCollections.map(collection => ({
     ...collection,
-    sounds: addKeysToSounds(collection.sounds),
-    key: index + 1,
     collapsed: collapsedCollections.includes(collection.name)
   }))
 }
@@ -78,14 +54,6 @@ function normalizeSounds(collections) {
     }))
     return [...allSounds, ...collectionSounds]
   }, [])
-}
-
-function addKeysToSounds(sounds) {
-  return sounds.map((sound, index) => ({
-    ...sound,
-    key: letterIndex[index] || letterIndex[index - letterIndex.length],
-    isSecondary: index >= letterIndex.length
-  }))
 }
 
 function getCollapsedCollections() {

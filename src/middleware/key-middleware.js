@@ -1,59 +1,21 @@
-import { press, release } from '../actions/key-actions'
 import { queue } from '../actions/sound-actions'
-import { PRESS, SOUND_THROTTLE, keyCodeMap } from '../constants'
+import { SOUND_THROTTLE, keyCodeMap, favoriteKeyIndex } from '../constants'
 import { throttleAction } from '../helpers/actions'
 
 const throttledQueue = throttleAction(queue, SOUND_THROTTLE)
 
 export default function createKeyMiddleware(document) {
   return ({ dispatch, getState }) => {
-    document.addEventListener('keydown', event => handleKeyPress(keyCodeMap[event.which], dispatch, getState()))
     document.addEventListener('keyup', event => handleKeyRelease(keyCodeMap[event.which], dispatch, getState()))
-
-    return next => action => {
-      next(action) // eslint-disable-line callback-return
-
-      if (action.type === PRESS) {
-        handleKeyCombinations(getState(), dispatch)
-      }
-    }
+    return next => action => next(action)
   }
 }
 
-function handleKeyPress(key, dispatch, { board, keys }) {
-  if (board && keys.collectionKey !== key && keys.soundKey !== key) {
-    dispatch(press(key))
+function handleKeyRelease(key, dispatch, { favorites }) {
+  const favoriteIndex = favoriteKeyIndex.indexOf(key)
+  const favorite = favorites[favoriteIndex]
+
+  if (favorite) {
+    dispatch(throttledQueue(favorite.sound, favorite.collection))
   }
-}
-
-function handleKeyRelease(key, dispatch, { keys }) {
-  const { collectionKey, soundKey, secondaryMode } = keys
-
-  if (collectionKey !== null || soundKey !== null || !secondaryMode) {
-    dispatch(release(key))
-  }
-}
-
-function handleKeyCombinations({ keys, sounds }, dispatch) {
-  const { collectionKey, soundKey, secondaryMode } = keys
-
-  if (collectionKey !== null && soundKey !== null) {
-    matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, secondaryMode)
-  }
-}
-
-function matchKeyCombinationToSound(dispatch, sounds, collectionKey, soundKey, secondaryMode) {
-  const matchingSound = findSound(sounds, collectionKey, soundKey, secondaryMode)
-
-  if (matchingSound) {
-    dispatch(throttledQueue(matchingSound.name, matchingSound.collection))
-  }
-}
-
-function findSound(sounds, collectionKey, soundKey, secondaryMode) {
-  return sounds.find(sound =>
-    sound.collectionKey === collectionKey &&
-    sound.key === soundKey &&
-    sound.isSecondary === secondaryMode
-  )
 }
