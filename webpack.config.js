@@ -43,6 +43,12 @@ const config = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      react: 'inferno-compat',
+      'react-dom': 'inferno-compat'
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Cloudboard',

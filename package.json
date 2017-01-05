@@ -1,6 +1,6 @@
 {
   "name": "cloudboard",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "A shared soundboard. �",
   "main": "server/index.js",
   "engines": {
@@ -31,6 +31,8 @@
   "homepage": "https://github.com/ngerritsen/cloudboard#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "inferno": "^1.0.7",
+    "inferno-compat": "^1.0.7",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^5.0.1",
