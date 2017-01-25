@@ -838,6 +838,26 @@
       {
         "name": "vergeet-je-niet-iets",
         "title": "Vergeet je niet iets?"
+      },
+      {
+        "name": "mandje-super-lang",
+        "title": "Heel mooi mandje gemaakt door de firma..."
+      },
+      {
+        "name": "mandje-ook-nog-lang",
+        "title": "Mandje van Tiggelaar gemaakt in Makkum"
+      },
+      {
+        "name": "mandje-net-niet",
+        "title": "Mandje van Tiggelaar"
+      },
+      {
+        "name": "kort",
+        "title": "Kort"
+      },
+      {
+        "name": "mand",
+        "title": "MAND!"
       }
     ]
   },
