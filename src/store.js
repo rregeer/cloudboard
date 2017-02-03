@@ -2,19 +2,19 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { browserHistory } from 'react-router'
 import createLogger from 'redux-logger'
+import { createEpicMiddleware, combineEpics } from 'redux-observable'
 
-import socket from './socket'
 import rawCollections from '../etc/sound-collections.json'
 import { isMobileBrowser as checkIfMobileBrowser } from './helpers/browser'
 import { getSoundsAndCollectionsFromRawConfig } from './helpers/collections'
 import { getFavorites } from './helpers/favorites'
 import * as reducers from './reducers'
 
-import collectionMiddleware from './middleware/collection-middleware'
-import favoritesMiddleware from './middleware/favorites-middleware'
-import createQueueMiddleware from './middleware/queue-middleware'
-import createPlayerMiddleware from './middleware/player-middleware'
-import createKeyMiddleware from './middleware/key-middleware'
+import keyEpic from './epics/key-epic'
+import collectionEpic from './epics/collection-epic'
+import favoritesEpic from './epics/favorites-epic'
+import queueEpic from './epics/queue-epic'
+import playerEpic from './epics/player-epic'
 
 function ownCreateStore(callback) {
   // eslint-disable-next-line max-statements
@@ -41,27 +41,31 @@ function createReducer(remoteMode, isMobileBrowser, sounds) {
   })
 }
 
-// eslint-disable-next-line max-statements
 function createMiddlewares(remoteMode, isMobileBrowser) {
   const middlewares = [
-    createQueueMiddleware(socket),
-    routerMiddleware(browserHistory),
-    createPlayerMiddleware(socket)
+    createEpicMiddleware(createRootEpic(isMobileBrowser)),
+    routerMiddleware(browserHistory)
   ]
-
-  if (!isMobileBrowser) {
-    middlewares.push(createKeyMiddleware(document))
-  }
-
-  if (Modernizr.localstorage) {
-    middlewares.push(collectionMiddleware, favoritesMiddleware)
-  }
 
   if (process.env.NODE_ENV === 'development') {
     middlewares.push(createLogger())
   }
 
   return middlewares
+}
+
+function createRootEpic(isMobileBrowser) {
+  const epics = [queueEpic, playerEpic]
+
+  if (Modernizr.localstorage) {
+    epics.push(collectionEpic, favoritesEpic)
+  }
+
+  if (!isMobileBrowser) {
+    epics.push(keyEpic)
+  }
+
+  return combineEpics(...epics)
 }
 
 export default ownCreateStore
