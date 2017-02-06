@@ -24,7 +24,7 @@ export default function queueEpic(action$, { getState }) {
     .throttleTime(SOUND_THROTTLE)
     .do(action => {
       const label = action.collection + ':' + action.sound
-      ga('send', 'event', 'Soundboard', 'play', label, '')
+      ga('send', 'event', 'Soundboard', 'play', label)
     })
     .map(action => ({
       action,
