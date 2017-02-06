@@ -1,3 +1,5 @@
+/* global ga */
+
 import shortid from 'shortid'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
@@ -5,7 +7,7 @@ import 'rxjs/add/operator/filter'
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/merge'
 
-import { QUEUE } from '../constants'
+import { QUEUE, SOUND_THROTTLE } from '../constants'
 import { SERVER_PLAY } from '../../server/constants'
 import { play } from '../actions/sound-actions'
 import { serverQueue } from '../../server/events'
@@ -19,6 +21,11 @@ export default function queueEpic(action$, { getState }) {
 
   return action$
     .filter(action => action.type === QUEUE)
+    .throttleTime(SOUND_THROTTLE)
+    .do(action => {
+      const label = action.collection + ':' + action.sound
+      ga('send', 'event', 'Soundboard', 'play', label, '')
+    })
     .map(action => ({
       action,
       localMode: isInLocalMode(getState()),
