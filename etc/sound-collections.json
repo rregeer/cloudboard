@@ -1539,6 +1539,32 @@
     ]
   },
   {
+    "name": "robbert",
+    "title": "Robbert",
+    "sounds": [
+      {
+        "name": "robbert",
+        "title": "Noordzij"
+      },
+      {
+        "name": "goed",
+        "title": "Goed"
+      },
+      {
+        "name": "4cm",
+        "title": "4cm"
+      },
+      {
+        "name": "maagdelijke-witte-sneeuw",
+        "title": "Maagdelijke witte sneeuw"
+      },
+      {
+        "name": "liniaal-ter-hand",
+        "title": "Liniaal ter hand"
+      }
+    ]
+  },
+  {
     "name": "other",
     "title": "Other",
     "sounds": [
@@ -1557,10 +1583,6 @@
       {
         "name": "biem",
         "title": "Biem!"
-      },
-      {
-        "name": "robbert",
-        "title": "Noordzij"
       }
     ]
   }
